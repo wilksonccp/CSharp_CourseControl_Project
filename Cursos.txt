@@ -1,0 +1,30 @@
+Exercício: Sistema de Gerenciamento de Cursos
+Objetivo:
+Desenvolver um programa para gerenciar cursos e inscrições de estudantes. Cada curso pode ter vários estudantes inscritos, e cada estudante pode estar inscrito em múltiplos cursos.
+
+Especificações:
+
+Classes a serem criadas:
+
+Classe Student: Deve conter informações como ID (único para cada estudante), nome e e-mail. Implemente métodos para manipular essas propriedades de maneira segura (encapsulamento).
+Classe Course: Deve incluir detalhes como ID do curso (único), nome do curso e uma lista de estudantes inscritos.
+Métodos da classe Course: Incluir métodos para adicionar um estudante ao curso, remover um estudante e listar todos os estudantes inscritos.
+Funcionalidades do Programa:
+
+Cadastro de Cursos e Estudantes:
+Permitir o registro de vários cursos e estudantes.
+Assegurar que não haja duplicidade nos IDs de estudantes ou cursos.
+Inscrição de Estudantes em Cursos:
+Permitir que o usuário inscreva estudantes em cursos específicos.
+Verificar se o estudante ou curso existe antes da inscrição.
+Aumento de Capacidade do Curso:
+Permitir que o usuário aumente a capacidade máxima de estudantes em um curso específico.
+Relatório:
+Gerar uma lista atualizada de todos os cursos com os nomes dos estudantes inscritos após as modificações.
+Interface com o Usuário:
+
+Perguntas claras e opções para que o usuário possa escolher a ação desejada (por exemplo, registrar estudante, registrar curso, inscrever estudante em curso, aumentar capacidade do curso).
+Considerações para Implementação:
+Encapsulamento: Assegure-se de que as propriedades críticas como IDs e listas de estudantes são manipuladas de forma segura, evitando acesso e modificação diretos de fora das classes.
+Validação de Dados: Verifique a entrada de dados para evitar inconsistências, como duplicidade de IDs e inscrição de estudantes em cursos não existentes.
+Interface de Usuário: Mantenha a interação com o usuário clara e simples, guiando-o através dos processos com instruções claras e feedback adequado sobre as ações realizadas.
