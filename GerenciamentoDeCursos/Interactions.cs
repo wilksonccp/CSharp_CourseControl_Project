@@ -1,9 +1,40 @@
 namespace GerenciamentoDeCursos;
 
-public class Interactions
+public class UserInteractions
 {
-    internal string Start()
+    public void ExibirMenuPrincipal()
     {
-        return "show the frist screen";
+        Console.WriteLine($"    MAIN MENU\n---------------\n"+
+        "1) Registrations\n"+
+        "2) Enrollments\n"+
+        "3) Deletions\n"+
+        "4) Reports");
+        Console.Write("Enter an option: ");
+    }
+    public void ExibirSubmenuCadastros()
+    {
+        Console.WriteLine($"   REGISTRATIONS\n-----------------\n"+
+        "1) Register student\n"+
+        "2) Register course\n"+
+        "3) Back to main menu");
+        Console.Write("Enter an option: ");
+    }
+
+    public void ExibirSubmenuRelatorios()
+    {
+        Console.WriteLine($"   REPORTS\n-------------\n"+
+        "1) List of students\n"+
+        "2) List of courses\n"+
+        "3) Enrollment reports\n"+
+        "4) Back to main menu");
+        Console.Write("Enter an option: ");
+    }
+    public void ExibirSubmenuExclusoes()
+    {
+        Console.WriteLine($"   EXCLUSIONS\n-----------------\n"+
+        "1) Delete student\n"+
+        "2) Delete course\n"+
+        "3) Back to main menu");
+        Console.Write("Enter an option: ");
     }
 }
