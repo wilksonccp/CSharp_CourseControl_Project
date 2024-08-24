@@ -19,6 +19,14 @@ public class UserInteractions
         "3) Back to main menu");
         Console.Write("Enter an option: ");
     }
+    public void ExibirSubmenuEnrollments()
+    {
+        Console.WriteLine($"   REGISTRATIONS\n-----------------\n"+
+        "1) Register student\n"+
+        "2) Register course\n"+
+        "3) Back to main menu");
+        Console.Write("Enter an option: ");
+    }
 
     public void ExibirSubmenuRelatorios()
     {
@@ -36,5 +44,22 @@ public class UserInteractions
         "2) Delete course\n"+
         "3) Back to main menu");
         Console.Write("Enter an option: ");
+    }
+    public void NavigateMainMenu()
+    {
+        ExibirMenuPrincipal();
+        string opcao = Console.ReadLine();
+
+        switch(opcao)
+        {
+            case "1":
+                //Call the navigation method for the REGISTRATIONS submenu
+                break;
+            case "2":
+                //Call the navigation method for the registrations submenu
+                break;
+            case "3"
+
+        }
     }
 }
