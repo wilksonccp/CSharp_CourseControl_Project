@@ -9,7 +9,15 @@ namespace GerenciamentoDeCursos
         static void Main(string[] args)
         {
 
-            List<Student> student = new List<Student>();
+            UserInteractions interactions = new UserInteractions();
+            interactions.ExibirMenuPrincipal();
+            Console.WriteLine();
+            interactions.ExibirSubmenuCadastros();
+            Console.WriteLine();
+            interactions.ExibirSubmenuRelatorios();
+
+
+            /*List<Student> student = new List<Student>();
             Console.Write("Insita uma ID para o novo estudante: ");
             int studentId = int.Parse(Console.ReadLine());
 
@@ -28,8 +36,8 @@ namespace GerenciamentoDeCursos
         private static bool CheckIdExist(int id, List<Student> students)
         {
             return students.Exists(student => student.Id == id);
+        }*/
         }
     }
 }
-
 
