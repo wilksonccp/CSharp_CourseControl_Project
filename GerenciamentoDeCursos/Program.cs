@@ -10,11 +10,6 @@ namespace GerenciamentoDeCursos
         {
 
             UserInteractions interactions = new UserInteractions();
-            interactions.ExibirMenuPrincipal();
-            Console.WriteLine();
-            interactions.ExibirSubmenuCadastros();
-            Console.WriteLine();
-            interactions.ExibirSubmenuRelatorios();
 
 
             /*List<Student> student = new List<Student>();
