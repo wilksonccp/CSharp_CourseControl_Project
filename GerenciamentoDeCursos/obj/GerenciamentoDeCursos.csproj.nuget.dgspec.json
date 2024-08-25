@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\wilks\\OneDrive\\Documentos\\APRENDENDO A PROGRAMAR\\CURSO C# COMPLETO\\ExerciciosGPT\\GerenciamentoDeCursos\\GerenciamentoDeCursos.csproj": {}
+    "C:\\Users\\wilks\\OneDrive\\Documentos\\APRENDENDO A PROGRAMAR\\CURSO C# COMPLETO\\ExerciciosGPT\\GerenciamentoDeCursos\\GerenciamentoDeCursos.csproj": {}
   },
   "projects": {
-    "c:\\Users\\wilks\\OneDrive\\Documentos\\APRENDENDO A PROGRAMAR\\CURSO C# COMPLETO\\ExerciciosGPT\\GerenciamentoDeCursos\\GerenciamentoDeCursos.csproj": {
+    "C:\\Users\\wilks\\OneDrive\\Documentos\\APRENDENDO A PROGRAMAR\\CURSO C# COMPLETO\\ExerciciosGPT\\GerenciamentoDeCursos\\GerenciamentoDeCursos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\wilks\\OneDrive\\Documentos\\APRENDENDO A PROGRAMAR\\CURSO C# COMPLETO\\ExerciciosGPT\\GerenciamentoDeCursos\\GerenciamentoDeCursos.csproj",
+        "projectUniqueName": "C:\\Users\\wilks\\OneDrive\\Documentos\\APRENDENDO A PROGRAMAR\\CURSO C# COMPLETO\\ExerciciosGPT\\GerenciamentoDeCursos\\GerenciamentoDeCursos.csproj",
         "projectName": "GerenciamentoDeCursos",
-        "projectPath": "c:\\Users\\wilks\\OneDrive\\Documentos\\APRENDENDO A PROGRAMAR\\CURSO C# COMPLETO\\ExerciciosGPT\\GerenciamentoDeCursos\\GerenciamentoDeCursos.csproj",
+        "projectPath": "C:\\Users\\wilks\\OneDrive\\Documentos\\APRENDENDO A PROGRAMAR\\CURSO C# COMPLETO\\ExerciciosGPT\\GerenciamentoDeCursos\\GerenciamentoDeCursos.csproj",
         "packagesPath": "C:\\Users\\wilks\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\wilks\\OneDrive\\Documentos\\APRENDENDO A PROGRAMAR\\CURSO C# COMPLETO\\ExerciciosGPT\\GerenciamentoDeCursos\\obj\\",
+        "outputPath": "C:\\Users\\wilks\\OneDrive\\Documentos\\APRENDENDO A PROGRAMAR\\CURSO C# COMPLETO\\ExerciciosGPT\\GerenciamentoDeCursos\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\wilks\\AppData\\Roaming\\NuGet\\NuGet.Config"
