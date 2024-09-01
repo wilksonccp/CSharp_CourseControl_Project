@@ -14,7 +14,8 @@ public class Student
         Age = age;
         Email = email;
     }
-    public static Student RegistrerStudent(List<Student> studentList)
+    //Method for inserting a student into the list
+    public static void RegistrerStudent(List<Student> studentList)
     {
         Console.WriteLine("Enter the student ID:");
 
@@ -29,7 +30,8 @@ public class Student
         int id = int.Parse(idInput);
 
         // Checks if ID is unique
-        while (!ValidationHelper.IsUniqueId(id, studentList))
+        
+        while (!ValidationHelper.IsUnique(id, studentList, student => student.Id))
         {
             Console.Write("This Id is already in use. Please enter a unique ID: ");
             id = int.Parse(Console.ReadLine());
@@ -68,7 +70,5 @@ public class Student
         studentList.Add(newStudent);
 
         Console.WriteLine("Student registered successfully!");
-
-        return newStudent;
     }
 }

@@ -3,6 +3,7 @@ using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 namespace GerenciamentoDeCursos;
 
+// all validations are here
 public class ValidationHelper
 {
     //Validates age
@@ -18,14 +19,19 @@ public class ValidationHelper
         return Regex.IsMatch(email, emailPattern);
     }
     // Validate unique ID
-    public static bool IsUniqueId(int id, List<Student> stuentList)
+    public static bool IsUnique<T>(int value, List<T> List, Func<T, int> selector)
     {
-        return stuentList.All(student => student.Id != id);
+        return List.All(item => selector(item) != value);
     }
     //Checks if input is a number
     public static bool IsValidNumber(string input)
     {
         return int.TryParse(input, out _);
+    }
+    //check the number of characters in the description
+    public static bool IsValidLength(string input, int maxLength)
+    {
+        return input.Length <= maxLength;
     }
     
 }

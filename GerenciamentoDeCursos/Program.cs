@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Collections.Generic;
+using Microsoft.VisualBasic;
 
 namespace GerenciamentoDeCursos
 {
@@ -8,30 +9,16 @@ namespace GerenciamentoDeCursos
     {
         static void Main(string[] args)
         {
+            UserInteractions userInteractions= new UserInteractions();
+            // Declaration of lists required for the program
+            List<Student> students = new List<Student>();
+            List<Course> courses = new List<Course>();
 
-            UserInteractions interactions = new UserInteractions();
+            //Talk the main menu
+            userInteractions.StartPresentation();
+            userInteractions.NavigateMainMenu(students, courses);
+            // DODO: INSERIR LOOPS PARA NAGEGAÇÃO CONTINUA
 
-
-            /*List<Student> student = new List<Student>();
-            Console.Write("Insita uma ID para o novo estudante: ");
-            int studentId = int.Parse(Console.ReadLine());
-
-            while (CheckIdExist(studentId, student))
-            {
-                Console.WriteLine("O número de Id inserido já existe, por gentileza insira uma nova ID: ");
-                studentId = int.Parse(Console.ReadLine());
-            }
-            Console.Write("Nome do estudante: ");
-            string name = Console.ReadLine();
-            Console.Write("Email do estudante: ");
-            string email = Console.ReadLine();
-            student.Add(new Student(studentId, name, email));
-            Console.WriteLine("Novo estudante adicionado com sucesso.");
-        }
-        private static bool CheckIdExist(int id, List<Student> students)
-        {
-            return students.Exists(student => student.Id == id);
-        }*/
         }
     }
 }

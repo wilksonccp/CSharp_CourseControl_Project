@@ -1,7 +1,15 @@
 namespace GerenciamentoDeCursos;
 
+
 public class UserInteractions
 {
+    // centralizes all menus that interact with the user
+    public void StartPresentation()
+    {
+        Console.WriteLine("Welcome to the Courses Manegement Sistem");
+        Console.WriteLine("===============================================");
+        Console.WriteLine();
+    }
     public void ShowMainMenu()
     {
         Console.WriteLine($"    MAIN MENU\n---------------\n" +
@@ -45,7 +53,8 @@ public class UserInteractions
         Console.Write("Enter an option: ");
     }
 
-    public void NavigateMainMenu()
+    //Methods for navigating menus
+    public void NavigateMainMenu(List<Student> students, List<Course> courses)
     {
         ShowMainMenu();
         string opcao = Console.ReadLine();
@@ -53,24 +62,25 @@ public class UserInteractions
         switch (opcao)
         {
             case "1":
-                // Chamar o método de navegação para o submenu REGISTRATIONS
+                NavigateSubmenuRegistrations(students, courses);
                 break;
             case "2":
-                // Chamar o método de navegação para o submenu ENROLLMENTS
+                NavigateSubmenuEnrollments(students, courses);
                 break;
             case "3":
-                // Chamar o método de navegação para o submenu EXCLUSIONS
+                NavigateSubmenuExclusions(students, courses);
                 break;
             case "4":
-                // Chamar o método de navegação para o submenu REPORTS
+                NavigateSubmenuReports(students, courses);
                 break;
             default:
                 Console.WriteLine("Invalid Option. Please, try again!");
-                NavigateMainMenu();
+                NavigateMainMenu(students, courses);
                 break;
         }
     }
-    public void NavigateSubmenuRegistrations()
+
+    public void NavigateSubmenuRegistrations(List<Student> students, List<Course> courses)
     {
         ShowSubmenuRegistrations();
         string opcao = Console.ReadLine();
@@ -78,22 +88,22 @@ public class UserInteractions
         switch (opcao)
         {
             case "1":
-                // Chamar o método para registrar o aluno
+                registrerList(students, Student.RegistrerStudent);
                 break;
             case "2":
-                // Chamar o método para registrar o curso
+                registrerList(courses, Course.RegisterCourse);
                 break;
             case "3":
                 ShowMainMenu();
-                NavigateMainMenu();
+                NavigateMainMenu(students, courses);
                 break;
             default:
                 Console.WriteLine("Invalid Option. Please, try again!");
-                NavigateSubmenuRegistrations();
+                NavigateSubmenuRegistrations(students, courses);
                 break;
         }
     }
-    public void NavigateSubmenuEnrollments()
+    public void NavigateSubmenuEnrollments(List<Student> students, List<Course> courses)
     {
         ShowSubmenuEnrollments();
         string opcao = Console.ReadLine();
@@ -108,15 +118,15 @@ public class UserInteractions
                 break;
             case "3":
                 ShowMainMenu();
-                NavigateMainMenu();
+                NavigateMainMenu(students, courses);
                 break;
             default:
                 Console.WriteLine("Invalid Option. Please, try again!");
-                NavigateSubmenuEnrollments();
+                NavigateSubmenuEnrollments(students, courses);
                 break;
         }
     }
-    public void NavigateSubmenuExclusions()
+    public void NavigateSubmenuExclusions(List<Student> students, List<Course> courses)
     {
         ShowSubmenuExclusions();
         string opcao = Console.ReadLine();
@@ -131,15 +141,15 @@ public class UserInteractions
                 break;
             case "3":
                 ShowMainMenu();
-                NavigateMainMenu();
+                NavigateMainMenu(students, courses);
                 break;
             default:
                 Console.WriteLine("Invalid Option. Please, try again!");
-                NavigateSubmenuExclusions();
+                NavigateSubmenuExclusions(students, courses);
                 break;
         }
     }
-    public void NavigateSubmenuReports()
+    public void NavigateSubmenuReports(List<Student> students, List<Course> courses)
     {
         ShowSubmenuReports();
         string opcao = Console.ReadLine();
@@ -157,12 +167,16 @@ public class UserInteractions
                 break;
             case "4":
                 ShowMainMenu();
-                NavigateMainMenu();
+                NavigateMainMenu(students, courses);
                 break;
             default:
                 Console.WriteLine("Invalid Option. Please, try again!");
-                NavigateSubmenuReports();
+                NavigateSubmenuReports(students, courses);
                 break;
         }
+    }
+    internal void registrerList<T>(List<T> list, Action<List<T>> registrerAction)
+    {
+        registrerAction(list);
     }
 }
