@@ -14,7 +14,8 @@ public class Student
         Age = age;
         Email = email;
     }
-    public static Student RegistrerStudent(List<Student> studentList)
+    //Method for inserting a student into the list
+    public static void RegistrerStudent(List<Student> studentList)
     {
         Console.WriteLine("Enter the student ID:");
 
@@ -69,7 +70,5 @@ public class Student
         studentList.Add(newStudent);
 
         Console.WriteLine("Student registered successfully!");
-
-        return newStudent;
     }
 }

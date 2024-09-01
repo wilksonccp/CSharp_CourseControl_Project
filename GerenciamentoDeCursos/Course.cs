@@ -19,7 +19,8 @@ public class Course
         Price = price;
     }
 
-    public static Course RegisterCourse(List<Course> courseList)
+    //Method for registering a new course
+    public static void RegisterCourse(List<Course> courseList)
     {
         Console.Write("Enter the CODE course: ");
         string codeInput = Console.ReadLine();
@@ -70,8 +71,6 @@ public class Course
         courseList.Add(newCourse);
 
         Console.WriteLine("Course registered successfully!");
-
-        return newCourse;
 
     }
 

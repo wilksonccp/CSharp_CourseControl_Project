@@ -3,6 +3,7 @@ using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 namespace GerenciamentoDeCursos;
 
+// all validations are here
 public class ValidationHelper
 {
     //Validates age
