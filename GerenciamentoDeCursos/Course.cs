@@ -82,7 +82,7 @@ public class Course
     {
         Console.WriteLine("UnenrollStudent method not implemented yet.");
     }
-    public static void DeleteCourse()
+    public void DeleteCourse()
     {
         Console.WriteLine("UnenrollStudent method not implemented yet.");
     }

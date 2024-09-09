@@ -1,8 +1,15 @@
+using System.IO.Pipes;
+
 namespace GerenciamentoDeCursos;
 
 
 public class UserInteractions
 {
+    //generic instantiation until implement the interaction loops
+    Course temporaryCouse = new Course(00, "anyname", "anydescription", 999.99 );
+    Student temporaryStudent = new Student( 00, "stuName", 99, "anyemail@gamil.com");
+    Reports temporaryReport = new Reports( );
+    
     // centralizes all menus that interact with the user
     public void StartPresentation()
     {
@@ -10,13 +17,21 @@ public class UserInteractions
         Console.WriteLine("===============================================");
         Console.WriteLine();
     }
+    public void AndPresentation()
+    {
+        Console.WriteLine("Thank you for use the Course Manegemant Sistem");
+        Console.WriteLine("===============================================");
+        Console.WriteLine("Press any key to exit");
+        Console.ReadLine();
+    }
     public void ShowMainMenu()
     {
         Console.WriteLine($"    MAIN MENU\n---------------\n" +
         "1) Registrations\n" +
         "2) Enrollments\n" +
-        "3) Deletions\n" +
-        "4) Reports");
+        "3) Exclusions\n" +
+        "4) Reports\n" +
+        "0) Exit");
         Console.Write("Enter an option: ");
     }
     public void ShowSubmenuRegistrations()
@@ -73,13 +88,15 @@ public class UserInteractions
             case "4":
                 NavigateSubmenuReports(students, courses);
                 break;
+            case "0":
+                AndPresentation();
+                break;
             default:
                 Console.WriteLine("Invalid Option. Please, try again!");
                 NavigateMainMenu(students, courses);
                 break;
         }
     }
-
     public void NavigateSubmenuRegistrations(List<Student> students, List<Course> courses)
     {
         ShowSubmenuRegistrations();
@@ -89,9 +106,11 @@ public class UserInteractions
         {
             case "1":
                 registrerList(students, Student.RegistrerStudent);
+                ShowSubmenuRegistrations();
                 break;
             case "2":
                 registrerList(courses, Course.RegisterCourse);
+                ShowSubmenuRegistrations();
                 break;
             case "3":
                 ShowMainMenu();
@@ -112,9 +131,13 @@ public class UserInteractions
         {
             case "1":
                 // Chamar o método para matricular o aluno
+                temporaryCouse.EnrollEstudent();
+                ShowSubmenuEnrollments();
                 break;
             case "2":
                 // Chamar o método para retirar a matrícula do aluno
+                temporaryCouse.UnenrollEstudent();
+                ShowSubmenuEnrollments();
                 break;
             case "3":
                 ShowMainMenu();
@@ -135,9 +158,13 @@ public class UserInteractions
         {
             case "1":
                 // Chamar o método para deletar o aluno
+                temporaryStudent.DeleteStudent();
+                ShowSubmenuExclusions();
                 break;
             case "2":
                 // Chamar o método para deletar o curso
+                temporaryCouse.DeleteCourse();
+                ShowSubmenuExclusions();
                 break;
             case "3":
                 ShowMainMenu();
@@ -158,12 +185,18 @@ public class UserInteractions
         {
             case "1":
                 // Chamar o método para listar os alunos
+                temporaryReport.ListAllStudent();
+                ShowSubmenuReports();
                 break;
             case "2":
                 // Chamar o método para listar os cursos
+                temporaryReport.ListAllCourses();
+                ShowSubmenuReports();
                 break;
             case "3":
                 // Chamar o método para os relatórios de matrícula
+                temporaryReport.EnrollmentReports();
+                ShowSubmenuReports();
                 break;
             case "4":
                 ShowMainMenu();
@@ -175,6 +208,7 @@ public class UserInteractions
                 break;
         }
     }
+
     internal void registrerList<T>(List<T> list, Action<List<T>> registrerAction)
     {
         registrerAction(list);
