@@ -71,4 +71,9 @@ public class Student
 
         Console.WriteLine("Student registered successfully!");
     }
+    public static void DeleteStudent()
+    {
+        Console.WriteLine("EnrollStudent method not implemented yet.");
+    }
+    
 }

@@ -1,4 +1,5 @@
 using System.Globalization;
+using System.Runtime.CompilerServices;
 
 namespace GerenciamentoDeCursos;
 
@@ -72,6 +73,18 @@ public class Course
 
         Console.WriteLine("Course registered successfully!");
 
+    }
+    public void EnrollEstudent()
+    {
+        Console.WriteLine("EnrollStudent method not implemented yet.");
+    }
+    public void UnenrollEstudent()
+    {
+        Console.WriteLine("UnenrollStudent method not implemented yet.");
+    }
+    public static void DeleteCourse()
+    {
+        Console.WriteLine("UnenrollStudent method not implemented yet.");
     }
 
     // Métodos para adicionar e remover estudantes (comentados anteriormente)
