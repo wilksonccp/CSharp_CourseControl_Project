@@ -5,11 +5,11 @@ namespace GerenciamentoDeCursos;
 
 public class UserInteractions
 {
-    //generic instantiation until implement the interaction loops
-    Course temporaryCouse = new Course(00, "anyname", "anydescription", 999.99 );
-    Student temporaryStudent = new Student( 00, "stuName", 99, "anyemail@gamil.com");
-    Reports temporaryReport = new Reports( );
-    
+    //FIXME: generic instantiation until implement the interaction loops
+    Course temporaryCouse = new Course(00, "anyname", "anydescription", 999.99);
+    Student temporaryStudent = new Student(00, "stuName", 99, "anyemail@gamil.com");
+    Reports temporaryReport = new Reports();
+
     // centralizes all menus that interact with the user
     public void StartPresentation()
     {
@@ -71,141 +71,140 @@ public class UserInteractions
     //Methods for navigating menus
     public void NavigateMainMenu(List<Student> students, List<Course> courses)
     {
-        ShowMainMenu();
-        string opcao = Console.ReadLine();
-
-        switch (opcao)
+        bool running = true;
+        while (running)
         {
-            case "1":
-                NavigateSubmenuRegistrations(students, courses);
-                break;
-            case "2":
-                NavigateSubmenuEnrollments(students, courses);
-                break;
-            case "3":
-                NavigateSubmenuExclusions(students, courses);
-                break;
-            case "4":
-                NavigateSubmenuReports(students, courses);
-                break;
-            case "0":
-                AndPresentation();
-                break;
-            default:
-                Console.WriteLine("Invalid Option. Please, try again!");
-                NavigateMainMenu(students, courses);
-                break;
+            ShowMainMenu();
+            string option1 = Console.ReadLine();
+            switch (option1)
+            {
+                case "1":
+                    NavigateSubmenuRegistrations(students, courses);
+                    break;
+                case "2":
+                    NavigateSubmenuEnrollments(students, courses);
+                    break;
+                case "3":
+                    NavigateSubmenuExclusions(students, courses);
+                    break;
+                case "4":
+                    NavigateSubmenuReports(students, courses);
+                    break;
+                case "0":
+                    AndPresentation();
+                    running = false;
+                    break;
+                default:
+                    Console.WriteLine("Invalid Option. Please, try again!");
+                    break;
+            }
         }
     }
     public void NavigateSubmenuRegistrations(List<Student> students, List<Course> courses)
     {
-        ShowSubmenuRegistrations();
-        string opcao = Console.ReadLine();
-
-        switch (opcao)
+        bool running = true;
+        while (running)
         {
-            case "1":
-                registrerList(students, Student.RegistrerStudent);
-                ShowSubmenuRegistrations();
-                break;
-            case "2":
-                registrerList(courses, Course.RegisterCourse);
-                ShowSubmenuRegistrations();
-                break;
-            case "3":
-                ShowMainMenu();
-                NavigateMainMenu(students, courses);
-                break;
-            default:
-                Console.WriteLine("Invalid Option. Please, try again!");
-                NavigateSubmenuRegistrations(students, courses);
-                break;
+            ShowSubmenuRegistrations();
+            string option2 = Console.ReadLine();
+            switch (option2)
+            {
+                case "1":
+                    registrerList(students, Student.RegistrerStudent);
+                    break;
+                case "2":
+                    registrerList(courses, Course.RegisterCourse);
+                    break;
+                case "3":
+                    running = false;
+                    break;
+                default:
+                    Console.WriteLine("Invalid Option. Please, try again!");
+                    break;
+            }
         }
     }
     public void NavigateSubmenuEnrollments(List<Student> students, List<Course> courses)
     {
-        ShowSubmenuEnrollments();
-        string opcao = Console.ReadLine();
-
-        switch (opcao)
+        bool running = true;
+        while (running)
         {
-            case "1":
-                // Chamar o método para matricular o aluno
-                temporaryCouse.EnrollEstudent();
-                ShowSubmenuEnrollments();
-                break;
-            case "2":
-                // Chamar o método para retirar a matrícula do aluno
-                temporaryCouse.UnenrollEstudent();
-                ShowSubmenuEnrollments();
-                break;
-            case "3":
-                ShowMainMenu();
-                NavigateMainMenu(students, courses);
-                break;
-            default:
-                Console.WriteLine("Invalid Option. Please, try again!");
-                NavigateSubmenuEnrollments(students, courses);
-                break;
+            ShowSubmenuEnrollments();
+            string option3 = Console.ReadLine();
+            switch (option3)
+            {
+                case "1":
+                    // TODO: builder this method
+                    temporaryCouse.EnrollStudent();
+                    break;
+                case "2":
+                    // TODO: builder this method
+                    temporaryCouse.UnenrollStudent();
+                    break;
+                case "3":
+                    running = false;
+                    break;
+                default:
+                    Console.WriteLine("Invalid Option. Please, try again!");
+                    break;
+            }
         }
     }
     public void NavigateSubmenuExclusions(List<Student> students, List<Course> courses)
     {
-        ShowSubmenuExclusions();
-        string opcao = Console.ReadLine();
-
-        switch (opcao)
+        bool running = true;
+        while (running)
         {
-            case "1":
-                // Chamar o método para deletar o aluno
-                temporaryStudent.DeleteStudent();
-                ShowSubmenuExclusions();
-                break;
-            case "2":
-                // Chamar o método para deletar o curso
-                temporaryCouse.DeleteCourse();
-                ShowSubmenuExclusions();
-                break;
-            case "3":
-                ShowMainMenu();
-                NavigateMainMenu(students, courses);
-                break;
-            default:
-                Console.WriteLine("Invalid Option. Please, try again!");
-                NavigateSubmenuExclusions(students, courses);
-                break;
+            ShowSubmenuExclusions();
+            string option4 = Console.ReadLine();
+            switch (option4)
+            {
+                case "1":
+                    // TODO: builder this method
+                    temporaryStudent.DeleteStudent();
+                    break;
+                case "2":
+                    // TODO: builder this method
+                    temporaryCouse.DeleteCourse();
+                    break;
+                case "3":
+                    running = false;
+                    break;
+                default:
+                    Console.WriteLine("Invalid Option. Please, try again!");
+                    break;
+            }
         }
     }
     public void NavigateSubmenuReports(List<Student> students, List<Course> courses)
     {
-        ShowSubmenuReports();
-        string opcao = Console.ReadLine();
-
-        switch (opcao)
+        bool running = true;
+        while (running)
         {
-            case "1":
-                // Chamar o método para listar os alunos
-                temporaryReport.ListAllStudent();
-                ShowSubmenuReports();
-                break;
-            case "2":
-                // Chamar o método para listar os cursos
-                temporaryReport.ListAllCourses();
-                ShowSubmenuReports();
-                break;
-            case "3":
-                // Chamar o método para os relatórios de matrícula
-                temporaryReport.EnrollmentReports();
-                ShowSubmenuReports();
-                break;
-            case "4":
-                ShowMainMenu();
-                NavigateMainMenu(students, courses);
-                break;
-            default:
-                Console.WriteLine("Invalid Option. Please, try again!");
-                NavigateSubmenuReports(students, courses);
-                break;
+            ShowSubmenuReports();
+            string option5 = Console.ReadLine();
+
+            switch (option5)
+            {
+                case "1":
+                    // TODO: builder this method
+                    temporaryReport.ListAllStudent();
+                    break;
+                case "2":
+                    // TODO: builder this method
+                    temporaryReport.ListAllCourses();
+                    break;
+                case "3":
+                    // TODO: builder this method
+                    temporaryReport.EnrollmentReports();
+                    break;
+                case "4":
+                    running = false;
+                    break;
+                default:
+                    Console.WriteLine("Invalid Option. Please, try again!");
+                    break;
+            }
         }
     }
 

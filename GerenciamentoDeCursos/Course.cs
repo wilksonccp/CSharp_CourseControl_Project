@@ -74,11 +74,11 @@ public class Course
         Console.WriteLine("Course registered successfully!");
 
     }
-    public void EnrollEstudent()
+    public void EnrollStudent()
     {
         Console.WriteLine("EnrollStudent method not implemented yet.");
     }
-    public void UnenrollEstudent()
+    public void UnenrollStudent()
     {
         Console.WriteLine("UnenrollStudent method not implemented yet.");
     }

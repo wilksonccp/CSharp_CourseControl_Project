@@ -9,7 +9,7 @@ public class ValidationHelper
     //Validates age
     public static bool IsValidAge(int age)
     {
-        return age >= 0 && age <= 120;
+        return age > 0 && age <= 120;
     }
     // Validate e-mail
     public static bool IsValidEmail(string email)
@@ -26,7 +26,7 @@ public class ValidationHelper
     //Checks if input is a number
     public static bool IsValidNumber(string input)
     {
-        return int.TryParse(input, out _);
+        return double.TryParse(input, out _);
     }
     //check the number of characters in the description
     public static bool IsValidLength(string input, int maxLength)
