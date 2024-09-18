@@ -17,7 +17,6 @@ namespace GerenciamentoDeCursos
             //Talk the main menu
             userInteractions.StartPresentation();
             userInteractions.NavigateMainMenu(students, courses);
-            // DODO: INSERIR LOOPS PARA NAGEGAÇÃO CONTINUA
 
         }
     }

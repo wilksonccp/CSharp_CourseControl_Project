@@ -74,27 +74,34 @@ public class Course
         Console.WriteLine("Course registered successfully!");
 
     }
-    public void EnrollStudent()
+    public void EnrollStudent(Student student)
     {
-        Console.WriteLine("EnrollStudent method not implemented yet.");
+
+        if (!Students.Contains(student))
+        {
+            Students.Add(student);
+            Console.WriteLine("Student enrolled successfully!");
+        }
+        else
+        {
+            Console.WriteLine("Student is already enrolled in this course.");
+        }
+
     }
-    public void UnenrollStudent()
+    public void UnenrollStudent(Student student)
     {
-        Console.WriteLine("UnenrollStudent method not implemented yet.");
+        if (Students.Contains(student))
+        {
+            Students.Remove(student);
+            Console.WriteLine("Student unenrolled successfully.");
+        }
+        else
+        {
+            Console.WriteLine("Student is not enrolled in this course.");
+        }
     }
     public void DeleteCourse()
     {
         Console.WriteLine("UnenrollStudent method not implemented yet.");
     }
-
-    // Métodos para adicionar e remover estudantes (comentados anteriormente)
-    /*internal void AddStudent(Student student)
-    {
-        Students.Add(student);
-    }
-
-    internal void RemStudent(int studentId)
-    {
-        Students.RemoveAll(s => s.Id == studentId);
-    }*/
 }

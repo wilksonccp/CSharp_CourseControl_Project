@@ -1,4 +1,5 @@
 using System.IO.Pipes;
+using System.Reflection.Metadata;
 
 namespace GerenciamentoDeCursos;
 
@@ -134,12 +135,12 @@ public class UserInteractions
             switch (option3)
             {
                 case "1":
-                    // TODO: builder this method
-                    temporaryCouse.EnrollStudent();
+                    // enroll student
+                    HandleEnrollment(students, courses, true);
                     break;
                 case "2":
-                    // TODO: builder this method
-                    temporaryCouse.UnenrollStudent();
+                    // unenroll student
+                    HandleEnrollment(students, courses, false);
                     break;
                 case "3":
                     running = false;
@@ -208,8 +209,38 @@ public class UserInteractions
         }
     }
 
+    // complementary functions
     internal void registrerList<T>(List<T> list, Action<List<T>> registrerAction)
     {
         registrerAction(list);
+    }
+    public void HandleEnrollment(List<Student> students, List<Course> courses, bool isEnrollment)
+    {
+        Console.Write("Enter Student ID:");
+        int studentId = int.Parse(Console.ReadLine());
+        Student selectedStudent = students.FirstOrDefault(s => s.Id == studentId);
+
+        Console.Write("Enter course ID: ");
+        int courseId = int.Parse(Console.ReadLine());
+        Course selectedCourse = courses.FirstOrDefault(c => c.Code == courseId);
+
+        if (selectedStudent != null && selectedCourse != null)
+        {
+            if (isEnrollment)
+            {
+                selectedCourse.EnrollStudent(selectedStudent);
+                Console.WriteLine("Student successfully enrolled!");
+
+            }
+            else
+            {
+                selectedCourse.UnenrollStudent(selectedStudent);
+                Console.WriteLine("Student successfully disenrolled!");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Student or couse not found!");
+        }
     }
 }
