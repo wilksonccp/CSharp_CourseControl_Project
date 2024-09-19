@@ -1,58 +1,58 @@
 # CSharp_CourseControl_Project
 
-## Visão Geral
-O **CSharp_CourseControl_Project** é uma aplicação simples para gerenciamento de cursos e estudantes, desenvolvida em C#. O projeto permite a criação, matrícula, exclusão e listagem de estudantes e cursos, utilizando um menu interativo em linha de comando. 
+## Overview
+The **CSharp_CourseControl_Project** is a course and student management application developed in C# with the primary goal of improving programming skills in an academic setting. The application is simple and offers features such as student and course registration, enrollment, deletion, and listing, all through an interactive command-line menu. The project is continuously evolving, with new functionalities being implemented and refined as development progresses.
 
-## Funcionalidades
-- **Registro de Estudantes**: Permite a inserção de novos estudantes com validação de ID único.
-- **Registro de Cursos**: Permite a inserção de novos cursos, incluindo código do curso, nome, descrição com limite de caracteres e preço.
-- **Matrícula de Estudantes** (em desenvolvimento): Permite matricular estudantes em cursos existentes.
-- **Exclusão de Estudantes e Cursos** (em desenvolvimento): Permite remover estudantes ou cursos da base de dados.
-- **Geração de Relatórios** (em desenvolvimento): Gera relatórios listando estudantes, cursos e matrículas.
+## Features
+- **Student Registration**: Allows the insertion of new students with unique ID validation.
+- **Course Registration**: Enables the creation of new courses, including course code, name, description with a character limit, and price.
+- **Student Enrollment**: Allows students to enroll in existing courses and also provides the option to withdraw students from courses.
+- **Student and Course Deletion**: Facilitates the removal of students or courses from the system.
+- **Report Generation**: Produces reports listing students, courses, and enrollments.
 
-## Estrutura do Projeto
-- **Program.cs**: Arquivo principal onde as listas de estudantes e cursos são gerenciadas.
-- **UserInteractions.cs**: Classe responsável por gerenciar a navegação nos menus e a interação com o usuário.
-- **ValidationHelper.cs**: Classe auxiliar que contém métodos para validações genéricas, como verificação de IDs únicos e limite de caracteres.
-- **Student.cs**: Classe que define o modelo de Estudante, incluindo métodos para registro e gerenciamento de estudantes.
-- **Course.cs**: Classe que define o modelo de Curso, incluindo métodos para registro e gerenciamento de cursos.
+## Project Structure
+- **Program.cs**: The main file that manages the lists of students and courses and handles the program’s execution.
+- **UserInteractions.cs**: Manages user interaction and navigates through the menus, controlling the main functionalities.
+- **ValidationHelper.cs**: A helper class containing methods for generic validations, such as unique ID checks and character limit validation.
+- **Student.cs**: The student model, containing properties and methods for registering and managing students.
+- **Course.cs**: The course model, containing properties and methods for registering and managing courses, as well as enrolling and unenrolling students.
 
-## Tecnologias Utilizadas
-- **C# 8.0**: Linguagem de programação principal.
-- **.NET 8.0**: Framework utilizado para o desenvolvimento.
-- **Visual Studio Code**: Ambiente de desenvolvimento.
+## Technologies Used
+- **C# 8.0**: The primary programming language.
+- **.NET 8.0**: The framework used for development.
+- **Visual Studio Code**: The chosen development environment.
 
-## Como Executar
-1. **Clone o Repositório**:
+## How to Run
+1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/seu-usuario/CSharp_CourseControl_Project.git
+   git clone https://github.com/your-username/CSharp_CourseControl_Project.git
    ```
-2. **Compile e Execute**:
-   - Abra o projeto no Visual Studio Code.
-   - Compile o projeto:
+2. **Build and Run**:
+   - Open the project in Visual Studio Code.
+   - Build the project:
      ```bash
      dotnet build
      ```
-   - Execute o projeto:
+   - Run the project:
      ```bash
      dotnet run
      ```
-3. **Navegue pelos Menus**:
-   - Siga as instruções no terminal para registrar estudantes, cursos e navegar pelo sistema.
 
-## Testes e Verificação
-- **Testes de Navegação**: Verificados todos os menus e submenus, garantindo que redirecionem corretamente.
-- **Validações**: Implementadas e testadas para garantir a integridade dos dados inseridos (IDs únicos, limite de caracteres, etc.).
-- **Testes de Registro**: Testes realizados para garantir que estudantes e cursos são registrados corretamente nas listas.
+3. **Navigate the Menus**:
+   - Follow the instructions in the terminal to register students, courses, and use the other features.
 
-## Futuras Melhorias
-- **Implementação da Matrícula de Estudantes em Cursos**.
-- **Função para Excluir Estudantes e Cursos**.
-- **Geração de Relatórios Detalhados**.
-- **Integração com Banco de Dados para Persistência de Dados**.
+## Testing and Verification
+- **Navigation Testing**: All menus and submenus have been tested to ensure correct redirection.
+- **Validations**: Unique IDs and character limits are verified to ensure data integrity.
+- **Registration and Enrollment Testing**: Functionalities for registering and enrolling students have been tested, including student withdrawal from courses.
 
-## Contribuições
-Contribuições são bem-vindas! Sinta-se à vontade para abrir issues e enviar pull requests.
+## Future Improvements
+- **Data Persistence**: Integration with a database to store students and courses.
+- **Detailed Reports**: Expanding the reporting functionality.
+- **Graphical Interface**: Implementing a more user-friendly graphical interface.
 
-## Licença
-Este projeto é licenciado sob os termos da licença MIT.
+## Contributions
+Contributions are welcome! Feel free to open issues or submit pull requests.
+
+## License
+This project is licensed under the terms of the MIT license.
