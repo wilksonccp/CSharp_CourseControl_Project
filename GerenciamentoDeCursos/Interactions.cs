@@ -229,13 +229,11 @@ public class UserInteractions
             if (isEnrollment)
             {
                 selectedCourse.EnrollStudent(selectedStudent);
-                Console.WriteLine("Student successfully enrolled!");
 
             }
             else
             {
                 selectedCourse.UnenrollStudent(selectedStudent);
-                Console.WriteLine("Student successfully disenrolled!");
             }
         }
         else
