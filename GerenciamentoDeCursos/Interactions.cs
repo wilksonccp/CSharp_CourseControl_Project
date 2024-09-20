@@ -216,13 +216,36 @@ public class UserInteractions
     }
     public void HandleEnrollment(List<Student> students, List<Course> courses, bool isEnrollment)
     {
-        Console.Write("Enter Student ID:");
-        int studentId = int.Parse(Console.ReadLine());
-        Student selectedStudent = students.FirstOrDefault(s => s.Id == studentId);
+        int studentId;
+        do
+        {
+            Console.Write("Enter Student ID:");
+            studentId = int.Parse(Console.ReadLine());
 
-        Console.Write("Enter course ID: ");
-        int courseId = int.Parse(Console.ReadLine());
-        Course selectedCourse = courses.FirstOrDefault(c => c.Code == courseId);
+            if (ValidationHelper.StudentExist(studentId, students))
+            {
+                Console.WriteLine("This ID is already in use, please insert a new ID");
+            }
+
+        }
+        while (ValidationHelper.StudentExist(studentId, students));
+        
+        int courseCode;
+        do
+        {
+            Console.Write("Enter Course ID:");
+            courseCode = int.Parse(Console.ReadLine());
+
+            if (ValidationHelper.CourseExist(courseCode, courses))
+            {
+                Console.WriteLine("This ID is already in use, please insert a new ID");
+            }
+
+        }
+        while (ValidationHelper.CourseExist(courseCode, courses));
+          
+        Student selectedStudent = students.FirstOrDefault(s => s.Id == studentId);
+        Course selectedCourse = courses.FirstOrDefault(c => c.Code == courseCode);
 
         if (selectedStudent != null && selectedCourse != null)
         {

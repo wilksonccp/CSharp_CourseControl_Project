@@ -33,5 +33,29 @@ public class ValidationHelper
     {
         return input.Length <= maxLength;
     }
+    // checks if a student exists given an ID and returns true if it exists
+    public static bool StudentExist(int Id, List<Student> students)
+    {
+        foreach(Student student in students)
+        {
+            if(student.Id == Id)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    // checks if a course exists given an ID and returns true if it exists
+    public static bool CourseExist(int code, List<Course> courses)
+    {
+        foreach(Course course in courses )
+        {
+            if(course.Code == code)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
     
 }
