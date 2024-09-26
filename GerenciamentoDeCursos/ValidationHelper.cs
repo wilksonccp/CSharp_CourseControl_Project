@@ -57,5 +57,10 @@ public class ValidationHelper
         }
         return false;
     }
+    // Checks if a number of characters is the same length as required
+    public static bool ValidateMinLength(string input, int minLenght)
+    {
+        return input.Length >= minLenght;
+    }
     
 }

@@ -77,6 +77,7 @@ public class UserInteractions
         {
             ShowMainMenu();
             string option1 = Console.ReadLine();
+            Console.Clear();
             switch (option1)
             {
                 case "1":
@@ -108,6 +109,7 @@ public class UserInteractions
         {
             ShowSubmenuRegistrations();
             string option2 = Console.ReadLine();
+            Console.Clear();
             switch (option2)
             {
                 case "1":
@@ -132,6 +134,7 @@ public class UserInteractions
         {
             ShowSubmenuEnrollments();
             string option3 = Console.ReadLine();
+            Console.Clear();
             switch (option3)
             {
                 case "1":
@@ -158,6 +161,7 @@ public class UserInteractions
         {
             ShowSubmenuExclusions();
             string option4 = Console.ReadLine();
+            Console.Clear();
             switch (option4)
             {
                 case "1":
@@ -184,7 +188,7 @@ public class UserInteractions
         {
             ShowSubmenuReports();
             string option5 = Console.ReadLine();
-
+            Console.Clear();
             switch (option5)
             {
                 case "1":
