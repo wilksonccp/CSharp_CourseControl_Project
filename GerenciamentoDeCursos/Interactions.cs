@@ -14,58 +14,77 @@ public class UserInteractions
     // centralizes all menus that interact with the user
     public void StartPresentation()
     {
-        Console.WriteLine("Welcome to the Courses Manegement Sistem");
-        Console.WriteLine("===============================================");
+        Console.WriteLine("""
+        Welcome to the Courses Manegement Sistem
+        ========================================
+        """);
         Console.WriteLine();
     }
     public void AndPresentation()
     {
-        Console.WriteLine("Thank you for use the Course Manegemant Sistem");
-        Console.WriteLine("===============================================");
-        Console.WriteLine("Press any key to exit");
+        Console.WriteLine("""
+        Thank you for use the Course Manegemant Sistem
+        ==============================================
+        Press any key to exit
+        """);
         Console.ReadLine();
     }
     public void ShowMainMenu()
     {
-        Console.WriteLine($"    MAIN MENU\n---------------\n" +
-        "1) Registrations\n" +
-        "2) Enrollments\n" +
-        "3) Exclusions\n" +
-        "4) Reports\n" +
-        "0) Exit");
+        Console.WriteLine("""
+            MAIN MENU
+        -----------------
+        1) Registrations
+        2) Enrollments
+        3) Exclusions
+        4) Reports
+        0) Exit
+        """);        
         Console.Write("Enter an option: ");
     }
     public void ShowSubmenuRegistrations()
     {
-        Console.WriteLine($"   REGISTRATIONS\n-----------------\n" +
-        "1) Register student\n" +
-        "2) Register course\n" +
-        "3) Back to main menu");
+        Console.WriteLine("""
+          REGISTRATIONS
+        -----------------
+        1) Register student
+        2) Register course
+        3) Back to main menu
+        """);
         Console.Write("Enter an option: ");
     }
     public void ShowSubmenuEnrollments()
     {
-        Console.WriteLine($"   ENROLLMENTS\n-----------------\n" +
-        "1) Enroll a student\n" +
-        "2) Withdraw a student\n" +
-        "3) Back to main menu");
+        Console.WriteLine("""
+           ENROLLMENTS
+        -----------------
+        1) Enroll a student
+        2) Withdraw a student
+        3) Back to main menu
+        """);
         Console.Write("Enter an option: ");
     }
     public void ShowSubmenuExclusions()
     {
-        Console.WriteLine($"   EXCLUSIONS\n-----------------\n" +
-        "1) Delete student\n" +
-        "2) Delete course\n" +
-        "3) Back to main menu");
+        Console.WriteLine("""
+            EXCLUSIONS
+        -----------------
+        1) Delete student
+        2) Delete course
+        3) Back to main menu
+        """);
         Console.Write("Enter an option: ");
     }
     public void ShowSubmenuReports()
     {
-        Console.WriteLine($"   REPORTS\n-------------\n" +
-        "1) List of students\n" +
-        "2) List of courses\n" +
-        "3) Enrollment reports\n" +
-        "4) Back to main menu");
+        Console.WriteLine("""
+             REPORTS
+        ------------------
+        1) List of students
+        2) List of courses
+        3) Enrollment reports
+        4) Back to main menu
+        """);
         Console.Write("Enter an option: ");
     }
 

@@ -9,7 +9,13 @@ namespace GerenciamentoDeCursos
     {
         static void Main(string[] args)
         {
-            UserInteractions userInteractions= new UserInteractions();
+            Console.Title = "Sistema de Controle de Cursos";
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.SetWindowSize(100, 30);
+            Console.Clear(); // Para aplicar o fundo da cor desejada
+
+            UserInteractions userInteractions = new UserInteractions();
             // Declaration of lists required for the program
             List<Student> students = new List<Student>();
             List<Course> courses = new List<Course>();
