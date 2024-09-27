@@ -23,13 +23,14 @@ public class Course
     //Method for registering a new course
     public static void RegisterCourse(List<Course> courseList)
     {
+        Console.Clear();
         Console.Write("Enter the CODE course: ");
         string codeInput = Console.ReadLine();
 
         //Check if inser is a number
         while (!ValidationHelper.IsValidNumber(codeInput))
         {
-            Console.WriteLine("Invalid input. Please enter a valid number for the CODE: ");
+            Console.Write("Invalid input. Please enter a valid number for the CODE: ");
             codeInput = Console.ReadLine();
         }
         int code = int.Parse(codeInput);
@@ -62,7 +63,7 @@ public class Course
 
          while (!ValidationHelper.IsValidNumber(priceImput))
         {
-            Console.WriteLine("Invalid input. Please enter a valid number for the PRICE: ");
+            Console.Write("Invalid input. Please enter a valid number for the PRICE: ");
             priceImput = Console.ReadLine();
         }
         double price = double.Parse(codeInput, CultureInfo.InvariantCulture);
@@ -71,7 +72,7 @@ public class Course
         Course newCourse = new Course(code, name, description, price);
         courseList.Add(newCourse);
 
-        Console.WriteLine("Course registered successfully!");
+        Console.Write("Course registered successfully!");
 
     }
     public void EnrollStudent(Student student)

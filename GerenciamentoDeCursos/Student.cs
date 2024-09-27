@@ -17,14 +17,15 @@ public class Student
     //Method for inserting a student into the list
     public static void RegistrerStudent(List<Student> studentList)
     {
-        Console.WriteLine("Enter the student ID:");
+        Console.Clear();
+        Console.Write("Enter the student ID:");
 
         string idInput = Console.ReadLine();
 
         // Checks if insert is a number
         while (!ValidationHelper.IsValidNumber(idInput))
         {
-            Console.WriteLine("Invalid input. Please enter a valid number for the ID: ");
+            Console.Write("Invalid input. Please enter a valid number for the ID: ");
             idInput = Console.ReadLine();
         }
         int id = int.Parse(idInput);
@@ -45,7 +46,7 @@ public class Student
         // Checks if insert is a number
         while (!ValidationHelper.IsValidNumber(ageInput) || !ValidationHelper.IsValidAge(int.Parse(ageInput)))
         {
-            Console.WriteLine("Invalid input. Please enter a valid age: ");
+            Console.Write("Invalid input. Please enter a valid age: ");
             ageInput = Console.ReadLine();
         }
 
@@ -69,11 +70,11 @@ public class Student
         Student newStudent = new Student(id, name, age, email);
         studentList.Add(newStudent);
 
-        Console.WriteLine("Student registered successfully!");
+        Console.Write("Student registered successfully!");
     }
     public void DeleteStudent()
     {
-        Console.WriteLine("EnrollStudent method not implemented yet.");
+        Console.Write("EnrollStudent method not implemented yet.");
     }
     
 }

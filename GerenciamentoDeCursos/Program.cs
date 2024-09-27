@@ -9,11 +9,10 @@ namespace GerenciamentoDeCursos
     {
         static void Main(string[] args)
         {
-            Console.Title = "Sistema de Controle de Cursos";
+            /*Console.Title = "Sistema de Controle de Cursos";
             Console.BackgroundColor = ConsoleColor.Black;
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.SetWindowSize(100, 30);
-            Console.Clear(); // Para aplicar o fundo da cor desejada
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.SetWindowSize(50, 15);*/
 
             UserInteractions userInteractions = new UserInteractions();
             // Declaration of lists required for the program
