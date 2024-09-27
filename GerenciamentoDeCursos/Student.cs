@@ -75,6 +75,7 @@ public class Student
     public void DeleteStudent()
     {
         Console.Write("EnrollStudent method not implemented yet.");
+        Console.Read();
     }
     
 }

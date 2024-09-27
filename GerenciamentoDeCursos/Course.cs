@@ -104,5 +104,6 @@ public class Course
     public void DeleteCourse()
     {
         Console.WriteLine("UnenrollStudent method not implemented yet.");
+        Console.Read();
     }
 }
