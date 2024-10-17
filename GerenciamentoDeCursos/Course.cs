@@ -28,9 +28,9 @@ public class Course
         string codeInput = Console.ReadLine();
 
         //Check if inser is a number
-        while (!ValidationHelper.IsValidNumber(codeInput))
+        while (!ValidationHelper.IsNumeric(codeInput))
         {
-            Console.Write("Invalid input. Please enter a valid number for the CODE: ");
+            Console.Write("This entry cannot contain a letter. Enter a valid CODE: ");
             codeInput = Console.ReadLine();
         }
         int code = int.Parse(codeInput);
@@ -46,9 +46,21 @@ public class Course
         Console.Write("Enter the course name: ");
         string name = Console.ReadLine();
 
+        while (!ValidationHelper.IsAlphabetic(name))
+        {
+            Console.Write("This entry cannot contain a number. Enter a valid name: ");
+            name = Console.ReadLine();
+        }
+
         //inser the description course
         Console.Write("Enter the course description: ");
         string description = Console.ReadLine();
+
+        while (!ValidationHelper.IsAlphabetic(description))
+        {
+            Console.Write("This entry cannot contain a numbers. Enter a valid description: ");
+            description = Console.ReadLine();
+        }
 
         //Check maximum description length
         while (!ValidationHelper.IsValidLength(description, 300))
@@ -61,7 +73,7 @@ public class Course
         Console.Write("Enter the course value: ");
         string priceImput = Console.ReadLine();
 
-         while (!ValidationHelper.IsValidNumber(priceImput))
+        while (!ValidationHelper.IsValidNumber(priceImput))
         {
             Console.Write("Invalid input. Please enter a valid number for the PRICE: ");
             priceImput = Console.ReadLine();

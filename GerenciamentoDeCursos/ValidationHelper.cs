@@ -28,6 +28,16 @@ public class ValidationHelper
     {
         return double.TryParse(input, out _);
     }
+    //Check if imput is a letter
+    public static bool IsAlphabetic(string input)
+    {
+        return input.All(char.IsLetter);
+    }
+    // Check if the input is a number (only integrer)
+    public static bool IsNumeric(string input)
+    {
+        return input.All(char.IsDigit);
+    }
     //check the number of characters in the description
     public static bool IsValidLength(string input, int maxLength)
     {

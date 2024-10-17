@@ -23,28 +23,33 @@ public class Student
         string idInput = Console.ReadLine();
 
         // Checks if insert is a number
-        while (!ValidationHelper.IsValidNumber(idInput))
+        while (!ValidationHelper.IsNumeric(idInput))
         {
-            Console.Write("Invalid input. Please enter a valid number for the ID: ");
+            Console.Write("This entry cannot contain a letters. Enter a valid ID: ");
             idInput = Console.ReadLine();
         }
         int id = int.Parse(idInput);
 
         // Checks if ID is unique
-        
         while (!ValidationHelper.IsUnique(id, studentList, student => student.Id))
         {
             Console.Write("This Id is already in use. Please enter a unique ID: ");
             id = int.Parse(Console.ReadLine());
         }
-
         Console.Write("Enter the student name: ");
         string name = Console.ReadLine();
+
+        //check if input has only numbers
+        while (!ValidationHelper.IsAlphabetic(name))
+        {
+            Console.Write("This entry cannot contain a numbers. Enter a valid name: ");
+            name = Console.ReadLine();
+        }
 
         Console.Write("Enter the student age: ");
         string ageInput = Console.ReadLine();
         // Checks if insert is a number
-        while (!ValidationHelper.IsValidNumber(ageInput) || !ValidationHelper.IsValidAge(int.Parse(ageInput)))
+        while (!ValidationHelper.IsNumeric(ageInput) || !ValidationHelper.IsValidAge(int.Parse(ageInput)))
         {
             Console.Write("Invalid input. Please enter a valid age: ");
             ageInput = Console.ReadLine();
@@ -77,5 +82,5 @@ public class Student
         Console.Write("EnrollStudent method not implemented yet.");
         Console.Read();
     }
-    
+
 }
