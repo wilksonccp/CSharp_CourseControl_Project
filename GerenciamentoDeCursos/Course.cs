@@ -1,8 +1,6 @@
 using System.Globalization;
-using System.Runtime.CompilerServices;
 
 namespace GerenciamentoDeCursos;
-
 
 public class Course
 {
@@ -19,88 +17,118 @@ public class Course
         Description = description;
         Price = price;
     }
-
-    //Method for registering a new course
+    // TODO: mUDAR AS CORES DAS MENSAGESN DE ERRO PARA VERMELHO PARA MELHORAR A IDENTIFICAÇÃO DOS ERROS.
+    // Method for registering a new course
     public static void RegisterCourse(List<Course> courseList)
     {
         Console.Clear();
-        Console.Write("Enter the CODE course: ");
-        string codeInput = Console.ReadLine();
 
-        //Check if inser is a number
-        while (!ValidationHelper.IsNumeric(codeInput))
+        // Check if CODE is entered correctly
+        string codeInput;
+        do
         {
-            Console.Write("This entry cannot contain a letter. Enter a valid CODE: ");
+            Console.Write("Enter the course CODE: ");
             codeInput = Console.ReadLine();
-        }
+
+            if (!ValidationHelper.IsValidString(codeInput))
+            {
+                Console.WriteLine("Error: The input cannot be empty.");
+            }
+            else if (!ValidationHelper.IsNumeric(codeInput))
+            {
+                Console.WriteLine("Error: The CODE must be numeric.");
+            }
+        } while (!ValidationHelper.IsValidString(codeInput) || !ValidationHelper.IsNumeric(codeInput));
+
         int code = int.Parse(codeInput);
 
-        // Checks if ID is unique
+        // Check if CODE is unique
         while (!ValidationHelper.IsUnique(code, courseList, course => course.Code))
         {
-            Console.Write("This CODE is already in use. Please enter a unique ID: ");
-            code = int.Parse(Console.ReadLine());
+            Console.Write("This CODE is already in use. Please enter a unique CODE: ");
+            codeInput = Console.ReadLine();
+            code = int.Parse(codeInput);
         }
 
-        // Insert the name course
-        Console.Write("Enter the course name: ");
-        string name = Console.ReadLine();
-
-        while (!ValidationHelper.IsAlphabetic(name))
+        // Check if name is correctly inserted
+        string name;
+        do
         {
-            Console.Write("This entry cannot contain a number. Enter a valid name: ");
+            Console.Write("Enter the course name: ");
             name = Console.ReadLine();
-        }
 
-        //inser the description course
-        Console.Write("Enter the course description: ");
-        string description = Console.ReadLine();
+            if (!ValidationHelper.IsValidString(name))
+            {
+                Console.WriteLine("Error: The input cannot be empty.");
+            }
+            else if (!ValidationHelper.IsAlphabetic(name))
+            {
+                Console.WriteLine("Error: The name must contain only letters.");
+            }
+        } while (!ValidationHelper.IsValidString(name) || !ValidationHelper.IsAlphabetic(name));
 
-        while (!ValidationHelper.IsAlphabetic(description))
+        // Check if description is correctly inserted
+        string description;
+        do
         {
-            Console.Write("This entry cannot contain a numbers. Enter a valid description: ");
+            Console.Write("Enter the course description: ");
             description = Console.ReadLine();
-        }
 
-        //Check maximum description length
-        while (!ValidationHelper.IsValidLength(description, 300))
+            if (!ValidationHelper.IsValidString(description))
+            {
+                Console.WriteLine("Error: The input cannot be empty.");
+            }
+            else if (!ValidationHelper.IsAlphabetic(description))
+            {
+                Console.WriteLine("Error: The description must contain only letters.");
+            }
+            else if (!ValidationHelper.IsValidLength(description, 300))
+            {
+                Console.WriteLine("Error: The description must be 300 characters or less.");
+            }
+        } while (!ValidationHelper.IsValidString(description) || !ValidationHelper.IsAlphabetic(description) || !ValidationHelper.IsValidLength(description, 300));
+
+        // Check if price is correctly inserted
+        string priceInput;
+        do
         {
-            Console.WriteLine("----------------------------------");
-            Console.WriteLine("Enter a description with a\n maximum of 300 characters");
-            description = Console.ReadLine();
-        }
+            Console.Write("Enter the course price: ");
+            priceInput = Console.ReadLine();
 
-        Console.Write("Enter the course value: ");
-        string priceImput = Console.ReadLine();
+            if (!ValidationHelper.IsValidString(priceInput))
+            {
+                Console.WriteLine("Error: The input cannot be empty.");
+            }
+            else if (!ValidationHelper.IsValidNumber(priceInput))
+            {
+                Console.WriteLine("Error: The price must be a valid number.");
+            }
+        } while (!ValidationHelper.IsValidString(priceInput) || !ValidationHelper.IsValidNumber(priceInput));
 
-        while (!ValidationHelper.IsValidNumber(priceImput))
-        {
-            Console.Write("Invalid input. Please enter a valid number for the PRICE: ");
-            priceImput = Console.ReadLine();
-        }
-        double price = double.Parse(codeInput, CultureInfo.InvariantCulture);
+        double price = double.Parse(priceInput, CultureInfo.InvariantCulture);
 
-        //Creates a new Course instance with the entered data
+        // Creates a new Course instance with the entered data
         Course newCourse = new Course(code, name, description, price);
         courseList.Add(newCourse);
 
-        Console.Write("Course registered successfully!");
-
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine("Course registered successfully!");
+        Console.ResetColor();
+        Console.Read();
     }
+
     public void EnrollStudent(Student student)
     {
-
         if (!Students.Contains(student))
         {
             Students.Add(student);
-            Console.WriteLine("Student enrolled successfully!");
         }
         else
         {
             Console.WriteLine("Student is already enrolled in this course.");
         }
-
     }
+
     public void UnenrollStudent(Student student)
     {
         if (Students.Contains(student))
@@ -113,9 +141,9 @@ public class Course
             Console.WriteLine("Student is not enrolled in this course.");
         }
     }
+
     public void DeleteCourse()
     {
-        Console.WriteLine("UnenrollStudent method not implemented yet.");
-        Console.Read();
+        Console.WriteLine("DeleteCourse method not implemented yet.");
     }
 }

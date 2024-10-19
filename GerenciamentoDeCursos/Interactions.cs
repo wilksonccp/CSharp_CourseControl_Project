@@ -43,7 +43,7 @@ public class UserInteractions
         3) Exclusions
         4) Reports
         0) Exit
-        """);        
+        """);
         Console.Write("Enter an option: ");
     }
     public void ShowSubmenuRegistrations()
@@ -60,7 +60,7 @@ public class UserInteractions
     }
     public void ShowSubmenuEnrollments()
     {
-        
+
         Console.Clear();
         Console.WriteLine("""
            ENROLLMENTS
@@ -243,52 +243,68 @@ public class UserInteractions
     }
     public void HandleEnrollment(List<Student> students, List<Course> courses, bool isEnrollment)
     {
-        int studentId;
+        // Request and validate the student ID
+        int studentId = 0;
         do
         {
-            Console.Write("Enter Student ID:");
-            studentId = int.Parse(Console.ReadLine());
-
-            if (ValidationHelper.StudentExist(studentId, students))
+            Console.Write("Enter Student ID: ");
+            string studentInput = Console.ReadLine();
+            if (!ValidationHelper.IsValidString(studentInput) || !ValidationHelper.IsNumeric(studentInput))
             {
-                Console.WriteLine("This ID is already in use, please insert a new ID");
+                Console.WriteLine("Error: The Student ID must be a valid number.");
+                continue;
             }
 
-        }
-        while (ValidationHelper.StudentExist(studentId, students));
-        
-        int courseCode;
+            studentId = int.Parse(studentInput);
+
+            if (!ValidationHelper.StudentExist(studentId, students))
+            {
+                Console.WriteLine("This ID doesn't exist, please insert an existing student ID.");
+            }
+        } while (!ValidationHelper.StudentExist(studentId, students));
+
+        // Request and validate the course code
+        int courseCode = 0;
         do
         {
-            Console.Write("Enter Course ID:");
-            courseCode = int.Parse(Console.ReadLine());
-
-            if (ValidationHelper.CourseExist(courseCode, courses))
+            Console.Write("Enter Course ID: ");
+            string courseInput = Console.ReadLine();
+            if (!ValidationHelper.IsValidString(courseInput) || !ValidationHelper.IsNumeric(courseInput))
             {
-                Console.WriteLine("This ID is already in use, please insert a new ID");
+                Console.WriteLine("Error: The Course ID must be a valid number.");
+                continue;
             }
 
-        }
-        while (ValidationHelper.CourseExist(courseCode, courses));
-          
+            courseCode = int.Parse(courseInput);
+
+            if (!ValidationHelper.CourseExist(courseCode, courses))
+            {
+                Console.WriteLine("This CODE doesn't exist, please insert an existing course CODE.");
+            }
+        } while (!ValidationHelper.CourseExist(courseCode, courses));
+
+        // Find the student and course
         Student selectedStudent = students.FirstOrDefault(s => s.Id == studentId);
         Course selectedCourse = courses.FirstOrDefault(c => c.Code == courseCode);
 
-        if (selectedStudent != null && selectedCourse != null)
+        // TODO: CRIAR UMA MENSAGEM PERSONALIZADA PARA CADA MATRICULA
+        // Perform enrollment or unenrollment
+        if (isEnrollment)
         {
-            if (isEnrollment)
-            {
-                selectedCourse.EnrollStudent(selectedStudent);
-
-            }
-            else
-            {
-                selectedCourse.UnenrollStudent(selectedStudent);
-            }
+            selectedCourse.EnrollStudent(selectedStudent);
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Student enrolled successfully");
+            Console.ResetColor();
+            Console.Read();
         }
         else
         {
-            Console.WriteLine("Student or couse not found!");
+            selectedCourse.UnenrollStudent(selectedStudent);
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Student unenrolled successfully");
+            Console.ResetColor();
+            Console.Read();
         }
+
     }
 }

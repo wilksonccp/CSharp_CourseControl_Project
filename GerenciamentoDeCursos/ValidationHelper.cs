@@ -46,9 +46,9 @@ public class ValidationHelper
     // checks if a student exists given an ID and returns true if it exists
     public static bool StudentExist(int Id, List<Student> students)
     {
-        foreach(Student student in students)
+        foreach (Student student in students)
         {
-            if(student.Id == Id)
+            if (student.Id == Id)
             {
                 return true;
             }
@@ -58,9 +58,9 @@ public class ValidationHelper
     // checks if a course exists given an ID and returns true if it exists
     public static bool CourseExist(int code, List<Course> courses)
     {
-        foreach(Course course in courses )
+        foreach (Course course in courses)
         {
-            if(course.Code == code)
+            if (course.Code == code)
             {
                 return true;
             }
@@ -72,5 +72,11 @@ public class ValidationHelper
     {
         return input.Length >= minLenght;
     }
-    
+    // Cheks if imput is empt or null.
+    public static bool IsValidString(string input)
+    {
+        return !string.IsNullOrWhiteSpace(input);
+    }
+
+
 }
