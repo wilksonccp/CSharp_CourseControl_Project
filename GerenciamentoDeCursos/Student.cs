@@ -21,15 +21,23 @@ public class Student
     
     // Check if ID is entered correctly
     string idInput;
-    do
+   do
+{
+    Console.Write("Enter the student ID: ");
+    idInput = Console.ReadLine();
+
+    if (!ValidationHelper.IsValidString(idInput))
     {
-        Console.Write("Enter the student ID: ");
-        idInput = Console.ReadLine();
-        if (!ValidationHelper.IsValidString(idInput))
-        {
-            Console.WriteLine("Error: The input cannot be empty.");
-        }
-    } while (!ValidationHelper.IsValidString(idInput) || !ValidationHelper.IsNumeric(idInput));
+        Console.WriteLine("Error: The input cannot be empty.");
+    }
+    else if (!ValidationHelper.IsNumeric(idInput))
+    {
+        Console.WriteLine("Error: The input must contain only numbers.");
+    }
+
+} while (!ValidationHelper.IsValidString(idInput) || !ValidationHelper.IsNumeric(idInput));
+
+
     
     int id = int.Parse(idInput);
 
@@ -106,7 +114,9 @@ do
     Student newStudent = new Student(id, name, age, email);
     studentList.Add(newStudent);
 
+    Console.ForegroundColor = ConsoleColor.Cyan;
     Console.WriteLine("Student registered successfully!");
+    Console.ResetColor();
     Console.Read();
 }
     public void DeleteStudent()
