@@ -38,7 +38,11 @@ public class Course
             {
                 Console.WriteLine("Error: The CODE must be numeric.");
             }
-        } while (!ValidationHelper.IsValidString(codeInput) || !ValidationHelper.IsNumeric(codeInput));
+            else if (!ValidationHelper.IsValidLength(codeInput, 4, 4))
+            {
+                Console.WriteLine("Error: The CODE must be 4 characters long.");
+            }
+        } while (!ValidationHelper.IsValidString(codeInput) || !ValidationHelper.IsNumeric(codeInput) || !ValidationHelper.IsValidLength(codeInput, 4, 4));
 
         int code = int.Parse(codeInput);
 
@@ -65,7 +69,11 @@ public class Course
             {
                 Console.WriteLine("Error: The name must contain only letters.");
             }
-        } while (!ValidationHelper.IsValidString(name) || !ValidationHelper.IsAlphabetic(name));
+            else if (!ValidationHelper.IsValidLength(name, 8, 70))
+            {
+                Console.WriteLine("Error: The name must be 8 to 70 characters long.");
+            }
+        } while (!ValidationHelper.IsValidString(name) || !ValidationHelper.IsAlphabetic(name) || !ValidationHelper.IsValidLength(name, 8, 70));
 
         // Check if description is correctly inserted
         string description;
@@ -82,11 +90,11 @@ public class Course
             {
                 Console.WriteLine("Error: The description must contain only letters.");
             }
-            else if (!ValidationHelper.IsValidLength(description, 300))
+            else if (!ValidationHelper.IsValidLength(description, 10, 300))
             {
-                Console.WriteLine("Error: The description must be 300 characters or less.");
+                Console.WriteLine("Error: The description must be 30 to 300 characters long.");
             }
-        } while (!ValidationHelper.IsValidString(description) || !ValidationHelper.IsAlphabetic(description) || !ValidationHelper.IsValidLength(description, 300));
+        } while (!ValidationHelper.IsValidString(description) || !ValidationHelper.IsAlphabetic(description) || !ValidationHelper.IsValidLength(description, 10, 300));
 
         // Check if price is correctly inserted
         string priceInput;
@@ -103,7 +111,11 @@ public class Course
             {
                 Console.WriteLine("Error: The price must be a valid number.");
             }
-        } while (!ValidationHelper.IsValidString(priceInput) || !ValidationHelper.IsValidNumber(priceInput));
+            else if (!ValidationHelper.IsValidPrice(decimal.Parse(priceInput), 10.00m, 1500.00m))
+            {
+                Console.WriteLine("Error: The price must be between R$ 10,00 and R$ 1.500,00");
+            }
+        } while (!ValidationHelper.IsValidString(priceInput) || !ValidationHelper.IsValidNumber(priceInput) || !ValidationHelper.IsValidPrice(decimal.Parse(priceInput), 10.00m, 1500.00m));
 
         double price = double.Parse(priceInput, CultureInfo.InvariantCulture);
 
