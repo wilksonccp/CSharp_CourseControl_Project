@@ -316,7 +316,7 @@ public class UserInteractions
         }
 
         // Ask and validade the couse CODE
-        string courseInput = ValidationHelper.GetValidatedID("Enter the course code: ", 3);
+        string courseInput = ValidationHelper.GetValidatedID("Enter the course code: ", 4);
         int courseCode = int.Parse(courseInput);
 
         if (!ValidationHelper.CourseExist(courseCode, courses))
@@ -339,6 +339,7 @@ public class UserInteractions
         // Enroll the student
         selectedCourse.EnrollStudent(selectedStudent);
         ConsoleHelper.PrintSuccess($"Student {selectedStudent.Name} has been enrolled in {selectedCourse.Name}.");
+        Console.Read();
     }
     public void UnenrollStudent(List<Student> students, List<Course> courses)
     {
@@ -355,7 +356,7 @@ public class UserInteractions
         }
 
         // Ask and validade the couse CODE
-        string courseInput = ValidationHelper.GetValidatedID("Enter the course code: ", 3);
+        string courseInput = ValidationHelper.GetValidatedID("Enter the course code: ", 4);
         int courseCode = int.Parse(courseInput);
 
         if (!ValidationHelper.CourseExist(courseCode, courses))
@@ -378,5 +379,6 @@ public class UserInteractions
         // Disenroll the student
         selectedCourse.UnenrollStudent(selectedStudent);
         ConsoleHelper.PrintSuccess($"Student {selectedStudent.Name} has been unenrolled from {selectedCourse.Name}.");
+        Console.Read();
     }
 }
