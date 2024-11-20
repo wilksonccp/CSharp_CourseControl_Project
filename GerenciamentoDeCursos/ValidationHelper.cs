@@ -45,7 +45,35 @@ public class ValidationHelper
     {
         return input.Length >= minLength && input.Length <= maxLength;
     }
+    // validates the entered ID or CODE
+    public static string GetValidatedID(string prompt, int length)
+    {
+        string idInput;
+        do
+        {
+            Console.Write(prompt);
+            idInput = Console.ReadLine();
 
+            if (!IsValidString(idInput))
+            {
+                ConsoleHelper.PrintError("Error: The input cannot be empty.");
+            }
+            else if (!IsNumeric(idInput))
+            {
+                ConsoleHelper.PrintError("Error: The input must contain only numbers.");
+            }
+            else if (!IsValidLength(idInput, length, length))
+            {
+                ConsoleHelper.PrintError($"Error: The ID must be {length} characters long.");
+            }
+            else
+            {
+                break;
+            }
+        } while (true);
+
+        return idInput;
+    }
     // checks if a student exists given an ID and returns true if it exists
     public static bool StudentExist(int Id, List<Student> students)
     {

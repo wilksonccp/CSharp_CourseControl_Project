@@ -20,32 +20,13 @@ public class Student
         Console.Clear();
 
         // Check if ID is entered correctly
-        string idInput;
-        do
-        {
-            Console.Write("Enter the student ID: ");
-            idInput = Console.ReadLine();
-
-            if (!ValidationHelper.IsValidString(idInput))
-            {
-                Console.WriteLine("Error: The input cannot be empty.");
-            }
-            else if (!ValidationHelper.IsNumeric(idInput))
-            {
-                Console.WriteLine("Error: The input must contain only numbers.");
-            }
-            else if (!ValidationHelper.IsValidLength(idInput, 3, 3))
-            {
-                Console.WriteLine("Error: The ID must be 3 characters long.");
-            }
-        } while (!ValidationHelper.IsValidString(idInput) || !ValidationHelper.IsNumeric(idInput) || !ValidationHelper.IsValidLength(idInput, 3, 3));
-
+        string idInput = ValidationHelper.GetValidatedID("Enter the student ID: ", 3);
         int id = int.Parse(idInput);
-
+        
         // Check if ID is unique
         while (!ValidationHelper.IsUnique(id, studentList, student => student.Id))
         {
-            Console.Write("This ID is already in use. Please enter a unique ID: ");
+            ConsoleHelper.PrintWarning("This ID is already in use. Please enter a unique ID: ");
             idInput = Console.ReadLine();
             id = int.Parse(idInput);
         }
@@ -59,15 +40,15 @@ public class Student
 
             if (!ValidationHelper.IsValidString(name))
             {
-                Console.WriteLine("Error: The input cannot be empty.");
+                ConsoleHelper.PrintError("Error: The input cannot be empty.");
             }
             else if (!ValidationHelper.IsAlphabetic(name))
             {
-                Console.WriteLine("Error: The input must contain only letters.");
+                ConsoleHelper.PrintError("Error: The input must contain only letters.");
             }
             else if (!ValidationHelper.IsValidLength(name, 3, 70))
             {
-                Console.WriteLine("Error: The name's studente must be 3 to 70 characters long.");
+                ConsoleHelper.PrintError("Error: The name's studente must be 3 to 70 characters long.");
             }
         } while (!ValidationHelper.IsValidString(name) || !ValidationHelper.IsAlphabetic(name) || !ValidationHelper.IsValidLength(name, 3, 70));
 
@@ -81,15 +62,15 @@ public class Student
 
             if (!ValidationHelper.IsValidString(ageInput))
             {
-                Console.WriteLine("Error: The input cannot be empty.");
+                ConsoleHelper.PrintError("Error: The input cannot be empty.");
             }
             else if (!ValidationHelper.IsNumeric(ageInput))
             {
-                Console.WriteLine("Error: The input must be a number.");
+                ConsoleHelper.PrintError("Error: The input must be a number.");
             }
             else if (!ValidationHelper.IsValidAge(int.Parse(ageInput), 4, 120))
             {
-                Console.WriteLine("Error: The age must be between 4 and 120.");
+                ConsoleHelper.PrintError("Error: The age must be between 4 and 120.");
             }
 
         } while (!ValidationHelper.IsValidString(ageInput) || !ValidationHelper.IsNumeric(ageInput) || !ValidationHelper.IsValidAge(int.Parse(ageInput), 4, 120));
@@ -105,15 +86,15 @@ public class Student
 
             if (!ValidationHelper.IsValidString(email))
             {
-                Console.WriteLine("Error: The input cannot be empty.");
+                ConsoleHelper.PrintError("Error: The input cannot be empty.");
             }
             else if (!ValidationHelper.IsValidEmail(email))
             {
-                Console.WriteLine("Error: Invalid e-mail format.");
+                ConsoleHelper.PrintError("Error: Invalid e-mail format.");
             }
             else if (!ValidationHelper.IsValidLength(email, 8, 80))
             {
-                Console.WriteLine("Error: The e-mail must be 8 to 80 characters long.");
+                ConsoleHelper.PrintError("Error: The e-mail must be 8 to 80 characters long.");
             }
         } while (!ValidationHelper.IsValidString(email) || !ValidationHelper.IsValidEmail(email) || !ValidationHelper.IsValidLength(email, 8, 80));
 
@@ -121,9 +102,7 @@ public class Student
         Student newStudent = new Student(id, name, age, email);
         studentList.Add(newStudent);
 
-        Console.ForegroundColor = ConsoleColor.Cyan;
-        Console.WriteLine("Student registered successfully!");
-        Console.ResetColor();
+        ConsoleHelper.PrintSuccess("Student registered successfully!");
         Console.Read();
     }
     public void DeleteStudent()
