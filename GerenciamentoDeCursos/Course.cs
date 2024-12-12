@@ -17,40 +17,20 @@ public class Course
         Description = description;
         Price = price;
     }
-    // TODO: mUDAR AS CORES DAS MENSAGESN DE ERRO PARA VERMELHO PARA MELHORAR A IDENTIFICAÇÃO DOS ERROS.
     // Method for registering a new course
     public static void RegisterCourse(List<Course> courseList)
     {
         Console.Clear();
 
         // Check if CODE is entered correctly
-        string codeInput;
-        do
-        {
-            Console.Write("Enter the course CODE: ");
-            codeInput = Console.ReadLine();
-
-            if (!ValidationHelper.IsValidString(codeInput))
-            {
-                ConsoleHelper.PrintError("Error: The input cannot be empty.");
-            }
-            else if (!ValidationHelper.IsNumeric(codeInput))
-            {
-                ConsoleHelper.PrintError("Error: The CODE must be numeric.");
-            }
-            else if (!ValidationHelper.IsValidLength(codeInput, 4, 4))
-            {
-                ConsoleHelper.PrintError("Error: The CODE must be 4 characters long.");
-            }
-        } while (!ValidationHelper.IsValidString(codeInput) || !ValidationHelper.IsNumeric(codeInput) || !ValidationHelper.IsValidLength(codeInput, 4, 4));
-
+        string codeInput = ValidationHelper.GetValidatedID("Enter the course CODE: ", 4);
         int code = int.Parse(codeInput);
 
         // Check if CODE is unique
         while (!ValidationHelper.IsUnique(code, courseList, course => course.Code))
         {
             ConsoleHelper.PrintWarning("This CODE is already in use. Please enter a unique CODE: ");
-            codeInput = Console.ReadLine();
+            codeInput = ValidationHelper.GetValidatedID("Enter the course CODE: ", 4);
             code = int.Parse(codeInput);
         }
         // Check if name is correctly inserted
@@ -156,6 +136,7 @@ public class Course
     public void DeleteCourse()
     {
         Console.WriteLine("DeleteCourse method not implemented yet.");
+        Console.Read();
     }
     public bool IsStudentEnrolled(Student student)
     {

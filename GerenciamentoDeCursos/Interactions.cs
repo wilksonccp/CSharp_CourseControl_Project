@@ -241,91 +241,61 @@ public class UserInteractions
     {
         registrerAction(list);
     }
-    /*public void HandleEnrollment(List<Student> students, List<Course> courses, bool isEnrollment)
-    {
-        Console.Clear();
-        // Request and validate the student ID
-        int studentId = 0;
-        do
-        {
-            string studentInput = ValidationHelper.GetValidatedID("Enter the student ID: ", 3);
-            studentId = int.Parse(studentInput);
 
-            if (!ValidationHelper.StudentExist(studentId, students))
-            {
-                Console.WriteLine("This ID doesn't exist, please insert an existing student ID.");
-            }
-        } while (!ValidationHelper.StudentExist(studentId, students));
-
-        
-        // Request and validate the course code
-        int courseCode = 0;
-        do
-        {
-            Console.Write("Enter Course ID: ");
-            string courseInput = Console.ReadLine();
-            if (!ValidationHelper.IsValidString(courseInput) || !ValidationHelper.IsNumeric(courseInput))
-            {
-                Console.WriteLine("Error: The Course ID must be a valid number.");
-                continue;
-            }
-
-            courseCode = int.Parse(courseInput);
-
-            if (!ValidationHelper.CourseExist(courseCode, courses))
-            {
-                Console.WriteLine("This CODE doesn't exist, please insert an existing course CODE.");
-            }
-        } while (!ValidationHelper.CourseExist(courseCode, courses));
-
-        // Find the student and course
-        Student selectedStudent = students.FirstOrDefault(s => s.Id == studentId);
-        Course selectedCourse = courses.FirstOrDefault(c => c.Code == courseCode); 
-
-        // Perform enrollment or unenrollment
-        if (isEnrollment)
-        {
-            selectedCourse.EnrollStudent(selectedStudent);
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine($"Student {selectedStudent.Name} (ID: {selectedStudent.Id}) has been successfully enrolled in the course {selectedCourse.Name} (ID: {selectedCourse.Code}).");
-            Console.ResetColor();
-            Console.Read();
-        }
-        else
-        {
-            selectedCourse.UnenrollStudent(selectedStudent);
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine($"Student {selectedStudent.Name} (ID: {selectedStudent.Id}) has been successfully unenrolled  in the course {selectedCourse.Name} (ID: {selectedCourse.Code}).");
-            Console.ResetColor();
-            Console.Read();
-        }
-
-    }*/
     public void EnrollStudent(List<Student> students, List<Course> courses)
     {
         Console.Clear();
 
         // Ask and validate the student ID
-        string studentInput = ValidationHelper.GetValidatedID("Enter the student ID: ", 3);
-        int studentId = int.Parse(studentInput);
-
-        if (!ValidationHelper.StudentExist(studentId, students))
+        string studentInput;
+        int studentId;
+        do
         {
-            ConsoleHelper.PrintError("This ID doesn't exist. Please insert an existing student ID.");
-            return; // Exit the function
-        }
+            studentInput = ValidationHelper.GetValidatedID("Enter the student ID (or 'exit' to return to the menu): ", 3);
 
-        // Ask and validade the couse CODE
-        string courseInput = ValidationHelper.GetValidatedID("Enter the course code: ", 4);
-        int courseCode = int.Parse(courseInput);
+            // Check for exit command
+            if (studentInput == "exit")
+            {
+                ConsoleHelper.PrintInfo("Returning to the enrollment menu...(press enter)");
+                Console.ReadLine();
+                return; // Retorna ao menu de matrículas
+            }
 
-        if (!ValidationHelper.CourseExist(courseCode, courses))
+            if (!int.TryParse(studentInput, out studentId) || !ValidationHelper.StudentExist(studentId, students))
+            {
+                ConsoleHelper.PrintError("This ID doesn't exist. Please insert an existing student ID.");
+            }
+            else
+            {
+                break; // Exit loop when valid
+            }
+        } while (true);
+
+        // Ask and validate the course CODE
+        string courseInput;
+        int courseCode;
+        do
         {
-            ConsoleHelper.PrintError("This CODE doesn't exist. Please insert an existing course CODE.");
-            return; // Exit the function
-        }
+            courseInput = ValidationHelper.GetValidatedID("Enter the course code (or 'exit' to return to the menu): ", 4);
 
-        // Find the student and the couse
+            // Check for exit command
+            if (courseInput.Equals("exit", StringComparison.OrdinalIgnoreCase))
+            {
+                ConsoleHelper.PrintInfo("Exiting enrollment menu...");
+                return; // Exit the function
+            }
+
+            if (!int.TryParse(courseInput, out courseCode) || !ValidationHelper.CourseExist(courseCode, courses))
+            {
+                ConsoleHelper.PrintError("This CODE doesn't exist. Please insert an existing course CODE.");
+            }
+            else
+            {
+                break; // Exit loop when valid
+            }
+        } while (true);
+
+        // Find the student and the course
         Student selectedStudent = students.First(s => s.Id == studentId);
         Course selectedCourse = courses.First(c => c.Code == courseCode);
 

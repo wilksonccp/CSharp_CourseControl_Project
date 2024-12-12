@@ -2,6 +2,7 @@ using System.Text.RegularExpressions;
 using System.Reflection.Metadata;
 using System.Security.Cryptography;
 using System.Text.RegularExpressions;
+using System.Data.Common;
 namespace GerenciamentoDeCursos;
 
 // all validations are here
@@ -51,8 +52,17 @@ public class ValidationHelper
         string idInput;
         do
         {
+            string idLabel = (length == 3) ? "ID" : "CODE";
+
             Console.Write(prompt);
             idInput = Console.ReadLine();
+
+            // Checks if the user wants to log out
+            if (idInput.Equals("exit", StringComparison.OrdinalIgnoreCase))
+            {
+                ConsoleHelper.PrintInfo("Exiting input process...");
+                return "exit"; // Returns "exit" to indicate that the user wants to exit
+            }
 
             if (!IsValidString(idInput))
             {
@@ -64,16 +74,17 @@ public class ValidationHelper
             }
             else if (!IsValidLength(idInput, length, length))
             {
-                ConsoleHelper.PrintError($"Error: The ID must be {length} characters long.");
+                ConsoleHelper.PrintError($"Error: The {idLabel} must be {length} characters long.");
             }
             else
             {
-                break;
+                break; // All criteria were met
             }
         } while (true);
 
         return idInput;
     }
+
     // checks if a student exists given an ID and returns true if it exists
     public static bool StudentExist(int Id, List<Student> students)
     {

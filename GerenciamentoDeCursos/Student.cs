@@ -22,12 +22,12 @@ public class Student
         // Check if ID is entered correctly
         string idInput = ValidationHelper.GetValidatedID("Enter the student ID: ", 3);
         int id = int.Parse(idInput);
-        
+
         // Check if ID is unique
         while (!ValidationHelper.IsUnique(id, studentList, student => student.Id))
         {
             ConsoleHelper.PrintWarning("This ID is already in use. Please enter a unique ID: ");
-            idInput = Console.ReadLine();
+            idInput = ValidationHelper.GetValidatedID("Enter the student ID: ", 3);
             id = int.Parse(idInput);
         }
 
