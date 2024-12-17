@@ -69,7 +69,7 @@ public class Course
             {
                 ConsoleHelper.PrintError("Error: The description must contain only letters.");
             }
-            else if (!ValidationHelper.IsValidLength(description, 10, 300))
+            else if (!ValidationHelper.IsValidLength(description, 30, 300))
             {
                 ConsoleHelper.PrintError("Error: The description must be 30 to 300 characters long.");
             }

@@ -17,7 +17,7 @@ public class UserInteractions
         Console.WriteLine("""
         Welcome to the Courses Manegement Sistem
         ========================================
-        PRESS ANY KEY TO CONTINUE
+        PRESS ENTER KEY TO CONTINUE
         """);
         Console.Read();
         Console.Clear();
@@ -139,10 +139,10 @@ public class UserInteractions
             switch (option2)
             {
                 case "1":
-                    registrerList(students, Student.RegistrerStudent);
+                    HandleListAction(students, Student.RegistrerStudent);
                     break;
                 case "2":
-                    registrerList(courses, Course.RegisterCourse);
+                    HandleListAction(courses, Course.RegisterCourse);
                     break;
                 case "3":
                     running = false;
@@ -186,21 +186,29 @@ public class UserInteractions
         {
             ShowSubmenuExclusions();
             string option4 = Console.ReadLine();
+
             switch (option4)
             {
-                case "1":
-                    // TODO: builder this method
-                    temporaryStudent.DeleteStudent();
+                case "1": // Exclusão de Estudante
+                    HandleTwoListAction(students, courses, (list1, list2) =>
+                    {
+                        Student.DeleteStudent(list1, list2);
+                    });
                     break;
-                case "2":
-                    // TODO: builder this method
-                    temporaryCouse.DeleteCourse();
+
+                case "2": // Exclusão de Curso
+                    HandleTwoListAction(courses, students, (list1, list2) =>
+                    {
+                        //Course.DeleteCourse(list1, list2);
+                    });
                     break;
-                case "3":
+
+                case "3": // Sair do Submenu
                     running = false;
                     break;
+
                 default:
-                    Console.WriteLine("Invalid Option. Please, try again!");
+                    ConsoleHelper.PrintError("Invalid Option. Please, try again!");
                     break;
             }
         }
@@ -237,10 +245,17 @@ public class UserInteractions
     }
 
     // complementary functions
-    internal void registrerList<T>(List<T> list, Action<List<T>> registrerAction)
+    internal void HandleTwoListAction<T1, T2>(List<T1> list1, List<T2> list2, Action<List<T1>, List<T2>> action)
     {
-        registrerAction(list);
+        action(list1, list2);
     }
+    internal void HandleListAction<T>(List<T> list, Action<List<T>> action)
+    {
+        action(list);
+    }
+
+
+
 
     public void EnrollStudent(List<Student> students, List<Course> courses)
     {

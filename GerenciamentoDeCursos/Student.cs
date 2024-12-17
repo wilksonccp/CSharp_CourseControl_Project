@@ -20,15 +20,15 @@ public class Student
         Console.Clear();
 
         // Check if ID is entered correctly
-        string idInput = ValidationHelper.GetValidatedID("Enter the student ID: ", 3);
-        int id = int.Parse(idInput);
+        string IdStrig = ValidationHelper.GetValidatedID("Enter the student ID: ", 3);
+        int id = int.Parse(IdStrig);
 
         // Check if ID is unique
         while (!ValidationHelper.IsUnique(id, studentList, student => student.Id))
         {
             ConsoleHelper.PrintWarning("This ID is already in use. Please enter a unique ID: ");
-            idInput = ValidationHelper.GetValidatedID("Enter the student ID: ", 3);
-            id = int.Parse(idInput);
+            IdStrig = ValidationHelper.GetValidatedID("Enter the student ID: ", 3);
+            id = int.Parse(IdStrig);
         }
 
         // Check if name is correctly inserted
@@ -105,10 +105,74 @@ public class Student
         ConsoleHelper.PrintSuccess("Student registered successfully!");
         Console.Read();
     }
-    public void DeleteStudent()
+    public static void DeleteStudent(List<Student> students, List<Course> courses)
     {
-        Console.Write("EnrollStudent method not implemented yet.");
+        ConsoleHelper.PrintInfo("=== Delete Student ===");
+
+        // 1️⃣ Solicita o ID do estudante
+        Student studentToRemove = null;
+
+        while (studentToRemove == null)
+        {
+            // Chama a função GetValidatedID, que agora aceita "exit" como entrada
+            string studentIdString = ValidationHelper.GetValidatedID("Enter the Student ID to delete (or type 'exit' to cancel): ", 3);
+
+            // Verifica se o usuário digitou "exit"
+            if (studentIdString.Equals("exit", StringComparison.OrdinalIgnoreCase))
+            {
+                ConsoleHelper.PrintInfo("You have chosen to exit the delete operation.");
+                return; // Sai do método imediatamente
+            }
+
+            int studentId = int.Parse(studentIdString);
+            studentToRemove = students.FirstOrDefault(student => student.Id == studentId);
+
+            if (studentToRemove == null)
+            {
+                ConsoleHelper.PrintError("Student not found. Please enter a valid Student ID.");
+            }
+        }
+
+        // 2️⃣ Verificar se o estudante está matriculado em algum curso
+        List<Course> enrolledCourses = courses.Where(course => course.Students.Any(s => s.Id == studentToRemove.Id)).ToList();
+
+        if (enrolledCourses.Count > 0)
+        {
+            // Exibir os cursos onde o estudante está matriculado
+            ConsoleHelper.PrintWarning("The student is enrolled in the following courses:");
+
+            foreach (var course in enrolledCourses)
+            {
+                ConsoleHelper.PrintInfo($"- {course.Name}");
+            }
+
+            // Perguntar ao usuário se deseja continuar
+            ConsoleHelper.PrintWarning("Do you want to remove this student from these courses and delete it? (Y/N)");
+            string confirmation = Console.ReadLine().ToUpper();
+
+            if (confirmation != "Y")
+            {
+                ConsoleHelper.PrintInfo("Operation canceled, press Enter.");
+                Console.Read();
+                return; // Sai do método se o usuário não confirmar a exclusão
+            }
+
+            // Remove o estudante de todos os cursos
+            foreach (var course in enrolledCourses)
+            {
+                course.Students.RemoveAll(s => s.Id == studentToRemove.Id);
+            }
+
+            ConsoleHelper.PrintSuccess("All enrollments for this student have been removed.");
+        }
+        else
+        {
+            ConsoleHelper.PrintInfo("The student is not enrolled in any courses.");
+        }
+
+        // 3️⃣ Remover o estudante da lista global de estudantes
+        students.Remove(studentToRemove);
+        ConsoleHelper.PrintSuccess("Student deleted successfully, press Enter to return to the menu.");
         Console.Read();
     }
-
 }
