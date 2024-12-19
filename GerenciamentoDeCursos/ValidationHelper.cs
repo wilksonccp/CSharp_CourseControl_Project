@@ -1,7 +1,6 @@
 using System.Text.RegularExpressions;
 using System.Reflection.Metadata;
 using System.Security.Cryptography;
-using System.Text.RegularExpressions;
 using System.Data.Common;
 namespace GerenciamentoDeCursos;
 
