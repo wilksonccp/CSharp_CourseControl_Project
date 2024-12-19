@@ -84,7 +84,6 @@ public class ValidationHelper
 
         return idInput;
     }
-
     // checks if a student exists given an ID and returns true if it exists
     public static bool StudentExist(int Id, List<Student> students)
     {
@@ -124,7 +123,4 @@ public class ValidationHelper
     {
         return price >= vlMin && price <= vlMax;
     }
-
-
-
 }

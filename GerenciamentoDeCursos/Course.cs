@@ -133,11 +133,63 @@ public class Course
         }
     }
 
-    public void DeleteCourse()
+    public static void DeleteCourse(List<Course> courses)
     {
-        Console.WriteLine("DeleteCourse method not implemented yet.");
+        ConsoleHelper.PrintInfo("=== Delete Course ===");
+
+        // 1️⃣ Request the course code
+        Course courseToRemove = null;
+
+        while (courseToRemove == null)
+        {
+            // Request the course code
+            string courseCodeString = ValidationHelper.GetValidatedID("Enter the Course CODE to delete (or type 'exit' to cancel): ", 4);
+
+            // Check if the user typed "exit"
+            if (courseCodeString.Equals("exit", StringComparison.OrdinalIgnoreCase))
+            {
+                ConsoleHelper.PrintInfo("You have chosen to exit the delete operation.");
+                ConsoleHelper.PrintInfo("Press ENTER");
+                Console.Read();
+                return; // Exit the method immediately
+            }
+
+            int courseCode = int.Parse(courseCodeString);
+
+            // 2️⃣ Verify if the course exists
+            courseToRemove = courses.FirstOrDefault(course => course.Code == courseCode);
+
+            if (courseToRemove == null)
+            {
+                ConsoleHelper.PrintError("Course not found. Please enter a valid Course CODE.");
+            }
+        }
+
+        // 3️⃣ Verify if the course has enrolled students
+        if (courseToRemove.Students.Count > 0)
+        {
+            ConsoleHelper.PrintWarning("It is not possible to delete this course because it has enrolled students.");
+            ConsoleHelper.PrintWarning("Unenroll students before deleting the course.");
+
+            // Display the list of enrolled students
+            ConsoleHelper.PrintError("The following students are enrolled in this course:");
+            foreach (var student in courseToRemove.Students)
+            {
+                ConsoleHelper.PrintInfo($"- ID: {student.Id}, Name: {student.Name}");
+            }
+            ConsoleHelper.PrintInfo("Press ENTER");
+            Console.Read();
+
+            return; // Exit the method without deleting the course
+        }
+
+        // 4️⃣ Remove the course from the global course list
+        courses.Remove(courseToRemove);
+        ConsoleHelper.PrintSuccess("Course successfully deleted.");
+        ConsoleHelper.PrintInfo("Press ENTER");
         Console.Read();
     }
+
     public bool IsStudentEnrolled(Student student)
     {
         return Students.Contains(student);

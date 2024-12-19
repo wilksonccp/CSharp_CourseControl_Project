@@ -3,35 +3,31 @@ using System.Reflection.Metadata;
 
 namespace GerenciamentoDeCursos;
 
-
 public class UserInteractions
 {
-    //FIXME: generic instantiation until implement the interaction loops
-    Course temporaryCouse = new Course(00, "anyname", "anydescription", 999.99);
-    Student temporaryStudent = new Student(00, "stuName", 99, "anyemail@gamil.com");
-    Reports temporaryReport = new Reports();
-
-    // centralizes all menus that interact with the user
+    // Centralizes all menus that interact with the user
     public void StartPresentation()
     {
         Console.WriteLine("""
-        Welcome to the Courses Manegement Sistem
+        Welcome to the Courses Management System
         ========================================
         PRESS ENTER KEY TO CONTINUE
         """);
         Console.Read();
         Console.Clear();
     }
+
     public void AndPresentation()
     {
         Console.Clear();
         Console.WriteLine("""
-        Thank you for use the Course Manegemant Sistem
-        ==============================================
+        Thank you for using the Course Management System
+        ================================================
         Press any key to exit
         """);
         Console.ReadLine();
     }
+
     public void ShowMainMenu()
     {
         Console.Clear();
@@ -46,6 +42,7 @@ public class UserInteractions
         """);
         Console.Write("Enter an option: ");
     }
+
     public void ShowSubmenuRegistrations()
     {
         Console.Clear();
@@ -58,9 +55,9 @@ public class UserInteractions
         """);
         Console.Write("Enter an option: ");
     }
+
     public void ShowSubmenuEnrollments()
     {
-
         Console.Clear();
         Console.WriteLine("""
            ENROLLMENTS
@@ -71,6 +68,7 @@ public class UserInteractions
         """);
         Console.Write("Enter an option: ");
     }
+
     public void ShowSubmenuExclusions()
     {
         Console.Clear();
@@ -83,6 +81,7 @@ public class UserInteractions
         """);
         Console.Write("Enter an option: ");
     }
+
     public void ShowSubmenuReports()
     {
         Console.Clear();
@@ -97,7 +96,7 @@ public class UserInteractions
         Console.Write("Enter an option: ");
     }
 
-    //Methods for navigating menus
+    // Methods for navigating through menus
     public void NavigateMainMenu(List<Student> students, List<Course> courses)
     {
         bool running = true;
@@ -129,6 +128,7 @@ public class UserInteractions
             }
         }
     }
+
     public void NavigateSubmenuRegistrations(List<Student> students, List<Course> courses)
     {
         bool running = true;
@@ -153,6 +153,7 @@ public class UserInteractions
             }
         }
     }
+
     public void NavigateSubmenuEnrollments(List<Student> students, List<Course> courses)
     {
         bool running = true;
@@ -163,11 +164,11 @@ public class UserInteractions
             switch (option3)
             {
                 case "1":
-                    // enroll student
+                    // Enroll a student
                     EnrollStudent(students, courses);
                     break;
                 case "2":
-                    // unenroll student
+                    // Unenroll a student
                     UnenrollStudent(students, courses);
                     break;
                 case "3":
@@ -179,6 +180,7 @@ public class UserInteractions
             }
         }
     }
+
     public void NavigateSubmenuExclusions(List<Student> students, List<Course> courses)
     {
         bool running = true;
@@ -189,21 +191,15 @@ public class UserInteractions
 
             switch (option4)
             {
-                case "1": // Exclusão de Estudante
-                    HandleTwoListAction(students, courses, (list1, list2) =>
-                    {
-                        Student.DeleteStudent(list1, list2);
-                    });
+                case "1": // Student deletion
+                    HandleTwoListAction(students, courses, Student.DeleteStudent);
                     break;
 
-                case "2": // Exclusão de Curso
-                    HandleTwoListAction(courses, students, (list1, list2) =>
-                    {
-                        //Course.DeleteCourse(list1, list2);
-                    });
+                case "2": // Course deletion
+                    HandleListAction(courses, Course.DeleteCourse);
                     break;
 
-                case "3": // Sair do Submenu
+                case "3": // Exit submenu
                     running = false;
                     break;
 
@@ -213,6 +209,7 @@ public class UserInteractions
             }
         }
     }
+
     public void NavigateSubmenuReports(List<Student> students, List<Course> courses)
     {
         bool running = true;
@@ -223,16 +220,13 @@ public class UserInteractions
             switch (option5)
             {
                 case "1":
-                    // TODO: builder this method
-                    temporaryReport.ListAllStudent();
+                    Reports.PrintStudentReport(students, courses);
                     break;
                 case "2":
-                    // TODO: builder this method
-                    temporaryReport.ListAllCourses();
+                    Reports.PrintCourseReport(courses);
                     break;
                 case "3":
-                    // TODO: builder this method
-                    temporaryReport.EnrollmentReports();
+                    Reports.PrintEnrollmentReport(courses);
                     break;
                 case "4":
                     running = false;
@@ -244,18 +238,16 @@ public class UserInteractions
         }
     }
 
-    // complementary functions
+    // Complementary functions
     internal void HandleTwoListAction<T1, T2>(List<T1> list1, List<T2> list2, Action<List<T1>, List<T2>> action)
     {
         action(list1, list2);
     }
+
     internal void HandleListAction<T>(List<T> list, Action<List<T>> action)
     {
         action(list);
     }
-
-
-
 
     public void EnrollStudent(List<Student> students, List<Course> courses)
     {
@@ -273,7 +265,7 @@ public class UserInteractions
             {
                 ConsoleHelper.PrintInfo("Returning to the enrollment menu...(press enter)");
                 Console.ReadLine();
-                return; // Retorna ao menu de matrículas
+                return; // Return to the enrollment menu
             }
 
             if (!int.TryParse(studentInput, out studentId) || !ValidationHelper.StudentExist(studentId, students))
@@ -334,36 +326,39 @@ public class UserInteractions
         string studentInput = ValidationHelper.GetValidatedID("Enter the student ID: ", 3);
         int studentId = int.Parse(studentInput);
 
+        // Check if the student exists
         if (!ValidationHelper.StudentExist(studentId, students))
         {
             ConsoleHelper.PrintError("This ID doesn't exist. Please insert an existing student ID.");
             return; // Exit the function
         }
 
-        // Ask and validade the couse CODE
+        // Ask and validate the course CODE
         string courseInput = ValidationHelper.GetValidatedID("Enter the course code: ", 4);
         int courseCode = int.Parse(courseInput);
 
+        // Check if the course exists
         if (!ValidationHelper.CourseExist(courseCode, courses))
         {
             ConsoleHelper.PrintError("This CODE doesn't exist. Please insert an existing course CODE.");
             return; // Exit the function
         }
 
-        // Find the student and the couse
+        // Find the student and the course
         Student selectedStudent = students.First(s => s.Id == studentId);
         Course selectedCourse = courses.First(c => c.Code == courseCode);
 
-        // Checks if the student is NOT enrolled
+        // Check if the student is NOT enrolled in the course
         if (!selectedCourse.IsStudentEnrolled(selectedStudent))
         {
             ConsoleHelper.PrintError($"Student {selectedStudent.Name} is not enrolled in {selectedCourse.Name}.");
             return; // Exit the function
         }
 
-        // Disenroll the student
+        // Unenroll the student
         selectedCourse.UnenrollStudent(selectedStudent);
         ConsoleHelper.PrintSuccess($"Student {selectedStudent.Name} has been unenrolled from {selectedCourse.Name}.");
         Console.Read();
     }
+
 }

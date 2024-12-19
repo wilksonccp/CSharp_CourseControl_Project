@@ -109,19 +109,19 @@ public class Student
     {
         ConsoleHelper.PrintInfo("=== Delete Student ===");
 
-        // 1️⃣ Solicita o ID do estudante
+        // 1️⃣ Requests the student ID
         Student studentToRemove = null;
 
         while (studentToRemove == null)
         {
-            // Chama a função GetValidatedID, que agora aceita "exit" como entrada
+            // Calls the GetValidatedID function, which now accepts "exit" as input
             string studentIdString = ValidationHelper.GetValidatedID("Enter the Student ID to delete (or type 'exit' to cancel): ", 3);
 
-            // Verifica se o usuário digitou "exit"
+            // Checks if the user typed "exit"
             if (studentIdString.Equals("exit", StringComparison.OrdinalIgnoreCase))
             {
                 ConsoleHelper.PrintInfo("You have chosen to exit the delete operation.");
-                return; // Sai do método imediatamente
+                return; // Exits the method immediately
             }
 
             int studentId = int.Parse(studentIdString);
@@ -133,12 +133,12 @@ public class Student
             }
         }
 
-        // 2️⃣ Verificar se o estudante está matriculado em algum curso
+        // 2️⃣ Verify if the student is enrolled in any course
         List<Course> enrolledCourses = courses.Where(course => course.Students.Any(s => s.Id == studentToRemove.Id)).ToList();
 
         if (enrolledCourses.Count > 0)
         {
-            // Exibir os cursos onde o estudante está matriculado
+            // Display the courses where the student is enrolled
             ConsoleHelper.PrintWarning("The student is enrolled in the following courses:");
 
             foreach (var course in enrolledCourses)
@@ -146,7 +146,7 @@ public class Student
                 ConsoleHelper.PrintInfo($"- {course.Name}");
             }
 
-            // Perguntar ao usuário se deseja continuar
+            // Ask the user if they want to continue
             ConsoleHelper.PrintWarning("Do you want to remove this student from these courses and delete it? (Y/N)");
             string confirmation = Console.ReadLine().ToUpper();
 
@@ -154,10 +154,11 @@ public class Student
             {
                 ConsoleHelper.PrintInfo("Operation canceled, press Enter.");
                 Console.Read();
-                return; // Sai do método se o usuário não confirmar a exclusão
+                return; // Exit the method if the user does not confirm the deletion
+
             }
 
-            // Remove o estudante de todos os cursos
+            // Remove the student from all courses
             foreach (var course in enrolledCourses)
             {
                 course.Students.RemoveAll(s => s.Id == studentToRemove.Id);
@@ -170,7 +171,7 @@ public class Student
             ConsoleHelper.PrintInfo("The student is not enrolled in any courses.");
         }
 
-        // 3️⃣ Remover o estudante da lista global de estudantes
+        // 3️⃣ Remove the student from the global list of students
         students.Remove(studentToRemove);
         ConsoleHelper.PrintSuccess("Student deleted successfully, press Enter to return to the menu.");
         Console.Read();
