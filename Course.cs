@@ -118,8 +118,6 @@ public class Course
         else
         {
             ConsoleHelper.PrintWarning("Student is already enrolled in this course.");
-            ConsoleHelper.PrintInfo("Press ENTER");
-            Console.Read();
         }
     }
 
@@ -132,8 +130,6 @@ public class Course
         else
         {
             ConsoleHelper.PrintWarning("Student is not enrolled in this course.");
-            ConsoleHelper.PrintInfo("Press ENTER");
-            Console.Read();
         }
     }
 
