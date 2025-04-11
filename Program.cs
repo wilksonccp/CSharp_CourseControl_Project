@@ -1,8 +1,6 @@
-﻿using System;
-using System.Globalization;
-using System.Collections.Generic;
-using Microsoft.VisualBasic;
-
+﻿
+using GerenciamentoDeCursos.Models;
+using GerenciamentoDeCursos.UI;
 namespace GerenciamentoDeCursos
 {
     internal class Program

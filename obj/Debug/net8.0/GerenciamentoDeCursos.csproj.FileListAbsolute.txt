@@ -1,0 +1,15 @@
+C:\Users\wilks\OneDrive\Documentos\APRENDENDO A PROGRAMAR\CURSO C# COMPLETO\ExerciciosGPT\GerenciamentoDeCursos\bin\Debug\net8.0\GerenciamentoDeCursos.exe
+C:\Users\wilks\OneDrive\Documentos\APRENDENDO A PROGRAMAR\CURSO C# COMPLETO\ExerciciosGPT\GerenciamentoDeCursos\bin\Debug\net8.0\GerenciamentoDeCursos.deps.json
+C:\Users\wilks\OneDrive\Documentos\APRENDENDO A PROGRAMAR\CURSO C# COMPLETO\ExerciciosGPT\GerenciamentoDeCursos\bin\Debug\net8.0\GerenciamentoDeCursos.runtimeconfig.json
+C:\Users\wilks\OneDrive\Documentos\APRENDENDO A PROGRAMAR\CURSO C# COMPLETO\ExerciciosGPT\GerenciamentoDeCursos\bin\Debug\net8.0\GerenciamentoDeCursos.dll
+C:\Users\wilks\OneDrive\Documentos\APRENDENDO A PROGRAMAR\CURSO C# COMPLETO\ExerciciosGPT\GerenciamentoDeCursos\bin\Debug\net8.0\GerenciamentoDeCursos.pdb
+C:\Users\wilks\OneDrive\Documentos\APRENDENDO A PROGRAMAR\CURSO C# COMPLETO\ExerciciosGPT\GerenciamentoDeCursos\obj\Debug\net8.0\GerenciamentoDeCursos.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\wilks\OneDrive\Documentos\APRENDENDO A PROGRAMAR\CURSO C# COMPLETO\ExerciciosGPT\GerenciamentoDeCursos\obj\Debug\net8.0\GerenciamentoDeCursos.AssemblyInfoInputs.cache
+C:\Users\wilks\OneDrive\Documentos\APRENDENDO A PROGRAMAR\CURSO C# COMPLETO\ExerciciosGPT\GerenciamentoDeCursos\obj\Debug\net8.0\GerenciamentoDeCursos.AssemblyInfo.cs
+C:\Users\wilks\OneDrive\Documentos\APRENDENDO A PROGRAMAR\CURSO C# COMPLETO\ExerciciosGPT\GerenciamentoDeCursos\obj\Debug\net8.0\GerenciamentoDeCursos.csproj.CoreCompileInputs.cache
+C:\Users\wilks\OneDrive\Documentos\APRENDENDO A PROGRAMAR\CURSO C# COMPLETO\ExerciciosGPT\GerenciamentoDeCursos\obj\Debug\net8.0\GerenciamentoDeCursos.sourcelink.json
+C:\Users\wilks\OneDrive\Documentos\APRENDENDO A PROGRAMAR\CURSO C# COMPLETO\ExerciciosGPT\GerenciamentoDeCursos\obj\Debug\net8.0\GerenciamentoDeCursos.dll
+C:\Users\wilks\OneDrive\Documentos\APRENDENDO A PROGRAMAR\CURSO C# COMPLETO\ExerciciosGPT\GerenciamentoDeCursos\obj\Debug\net8.0\refint\GerenciamentoDeCursos.dll
+C:\Users\wilks\OneDrive\Documentos\APRENDENDO A PROGRAMAR\CURSO C# COMPLETO\ExerciciosGPT\GerenciamentoDeCursos\obj\Debug\net8.0\GerenciamentoDeCursos.pdb
+C:\Users\wilks\OneDrive\Documentos\APRENDENDO A PROGRAMAR\CURSO C# COMPLETO\ExerciciosGPT\GerenciamentoDeCursos\obj\Debug\net8.0\GerenciamentoDeCursos.genruntimeconfig.cache
+C:\Users\wilks\OneDrive\Documentos\APRENDENDO A PROGRAMAR\CURSO C# COMPLETO\ExerciciosGPT\GerenciamentoDeCursos\obj\Debug\net8.0\ref\GerenciamentoDeCursos.dll
